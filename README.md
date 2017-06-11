@@ -37,9 +37,20 @@ Useful and fun for people with autism and/or asperger's to learn and practice em
 #### JavaScript Libraries:
 - https://github.com/auduno/clmtrackr
 
+![clmtrackr](/images/clmtrackr.png)
+
 #### Emotion Detection tools:
 - Lambdal Facial Recognition API (https://lambdal.com/face-recognition-api#src)
+
+![Lambdal](/images/lambdal.png)
+
 - Microsoft Azure Cognitive Services - Emotion (https://azure.microsoft.com/en-us/services/cognitive-services/emotion/)
+
+![microsoft-azure](/images/microsoft-azure.png)
+
 - Google Cloud Vision Facial Recognition AI SDK (https://cloud.google.com/vision/) (maybe)
+
+![google-vision](/images/google-vision.png)
+
 - Affectiva Emotion SDK (https://affectiva.readme.io/docs/getting-started-with-the-emotion-sdk-for-the-cloud) (maybe)
 - Clarifai Video Recognition AI SDK (https://developer.clarifai.com/guide/public-models#public-models) (maybe)
