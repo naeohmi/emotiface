@@ -23,6 +23,24 @@ Useful and fun for people with autism and/or asperger's to learn and practice em
 9. Repeat steps 3-8 for a set amount of time (~30 seconds) per round
 10. Display closing landing page with: total score and button to play again
 
+### Wire Frames:
+
+#### Home/Start Landing Page:
+
+![wire-frame](/images/wf-startlanding.png)
+
+#### Game In Play - Emotion to do screen:
+
+![wire-frame](/images/wf-emotiontodo.png)
+
+#### Game In Play - Current Face (with webcam):
+
+![wire-frame](/images/wf-currentface.png)
+
+#### End/Final Score Landing Page:
+
+![wire-frame](/images/wf-endlanding.png)
+
 ### Tech Stack:
 
 #### Core Stack:
