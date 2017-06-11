@@ -43,6 +43,3 @@ Useful and fun for people with autism and/or asperger's to learn and practice em
 - Google Cloud Vision Facial Recognition AI SDK (https://cloud.google.com/vision/) (maybe)
 - Affectiva Emotion SDK (https://affectiva.readme.io/docs/getting-started-with-the-emotion-sdk-for-the-cloud) (maybe)
 - Clarifai Video Recognition AI SDK (https://developer.clarifai.com/guide/public-models#public-models) (maybe)
-
-
-
