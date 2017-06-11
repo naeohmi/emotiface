@@ -11,38 +11,40 @@ import FourOhFour from './components/FourOhFour';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import {
-        BrowserRouter as Router,
-        Route,
-        Switch
-      } from 'react-router-dom';
-      
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+
 class App extends Component {
-  constructor(props);
-  super(props);
-  this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-  };
-  this.score = this.score.bind(this);
+    };
+this.score = this.score.bind(this);
+};
+score() {
 
-  score() {
-
-  }
-  render() {
-    return (
-      <div className="app-wrapper">
-<Navigation />
-  <Switch>
-    <Route path="/" exact component={() => (<StartLanding />)}/>
-    <Route path="/about" exact component={() => (<AboutPage />)}/>
-    <Route path="/play/setup" exact component={() => (<EmotionToDo />)}/>
-  <Route path="/play/action" exact component={() => (<CurrentFace />)}/>
-  <Route path="/end" exact component={() => (<EndLanding />)}/>
-  <Route path="/*" exact component={() => (<FourOhFour />)}/>
-  <Footer />
-  <Switch>
+}
+render() {
+  return (
+    <Router>
+    <div className="app-wrapper">
+      <Navigation />
+      <Switch>
+        <Route path="/" exact component={() => (<StartLanding />)} />
+        <Route path="/about" exact component={() => (<AboutPage />)} />
+        <Route path="/play/setup" exact component={() => (<EmotionToDo />)} />
+        <Route path="/play/action" exact component={() => (<CurrentFace />)} />
+        <Route path="/end" exact component={() => (<EndLanding />)} />
+        <Route path="/*" exact component={() => (<FourOhFour />)} />
+        <Footer />
+        </Switch>
       </div>
       </Router>
-    );
+      
+      );
   }
 }
 
