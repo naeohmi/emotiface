@@ -116,3 +116,17 @@ h1 {
   text-align: center;
 }
 
+/*---------EMOTION TO DO---------*/
+
+.col-md-8 {
+  width: 680px;
+  height: 480px;
+}
+
+.col-md-7 {
+  height: 25em;
+}
+
+.results-emotion {
+  word-wrap: break-word;
+}

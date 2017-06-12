@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
-import ajax from 'ajax';
+// import axios from 'axios';
+// import ajax from 'ajax';
 // import Clmtrackr from './libraries/Clmtrackr';
 // import clmtrackr from 'clmtrackr';
 import StartLanding from './components/StartLanding';
