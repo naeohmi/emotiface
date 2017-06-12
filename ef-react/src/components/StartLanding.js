@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import Footer from './Footer';
 
 class StartLanding extends Component {
     constructor(props) {
@@ -10,7 +12,7 @@ class StartLanding extends Component {
     }
     startGame(event) {
         event.preventDefault();
-        
+
 
     }
 
@@ -19,20 +21,25 @@ class StartLanding extends Component {
             <div className="start-landing-wrapper">
                 <h1>welcome to:</h1>
                 {/*<a href="/"><img src="/images/logo-big.png" alt="logo-big"/></a>*/}
-                <a href="/"><img src="/images/logo.png" alt="logo"/></a>
+                <a href="/"><img src="/images/logo.png" alt="logo" /></a>
                 <div className="start-info">
-                    <input
+                    {/*<input
                         type="text"
                         placeholder="enter initials"
                         ref="initials"
                         className="initials"
-                        />
-                    <button
-                        className="start-button"
-                        onClick={this.startGame}
-                        >click to start!
-                    </button>
+                    />*/}
+                    <div className="start-btn-div">
+                        <ul className="start-btn-ul">
+                            <li className="start-btn-li">
+                                <NavLink to="/play/setup">
+                                    click to start!
+                            </NavLink>
+                            </li>
+                        </ul>
                     </div>
+                </div>
+                <Footer />
             </div>
         );
     }
