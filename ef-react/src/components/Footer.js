@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 
 class Footer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
 
     render() {
         return (
             <div className="footer-wrapper">
-                <h1>Footer</h1>
+                <h1 className="footer-h1">
+                    made with <span>&hearts;</span>by:
+                    <a href="www.github.com/naeohmi">naeohmi</a>
+                </h1>
             </div>
         );
     }
