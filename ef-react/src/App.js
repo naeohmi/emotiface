@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ajax from 'ajax';
+// import Clmtrackr from './libraries/Clmtrackr';
+// import clmtrackr from 'clmtrackr';
 import StartLanding from './components/StartLanding';
 import CurrentFace from './components/CurrentFace';
 import EmotionToDo from './components/EmotionToDo';
@@ -22,29 +24,43 @@ class App extends Component {
     this.state = {
 
     };
-this.score = this.score.bind(this);
-};
-score() {
+    this.score = this.score.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
+  };
+  //need to add the score here
+  score() {
 
-}
-render() {
-  return (
-    <Router>
-    <div className="app-wrapper">
-      <Navigation />
-      <Switch>
-        <Route path="/" exact component={() => (<StartLanding />)} />
-        <Route path="/about" exact component={() => (<AboutPage />)} />
-        <Route path="/play/setup" exact component={() => (<EmotionToDo />)} />
-        <Route path="/play/action" exact component={() => (<CurrentFace />)} />
-        <Route path="/end" exact component={() => (<EndLanding />)} />
-        <Route path="/*" exact component={() => (<FourOhFour />)} />
-        <Footer />
-        </Switch>
-      </div>
+  }
+  //from stackoverflow on how to add a script tag
+  componentWillMount() {
+    const script = document.createElement("script");
+    //add affectiva emotion API to App.js
+    script.src = "https://download.affectiva.com/js/3.2/affdex.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="app-wrapper">
+          <Navigation />
+          <Switch>
+            <Route path="/" exact component={() => (<StartLanding 
+              componentWillMount={this.componentWillMount}
+              />)} />
+            <Route path="/about" exact component={() => (<AboutPage />)} />
+            <Route path="/play/setup" exact component={() => (<EmotionToDo />)} />
+            <Route path="/play/action" exact component={() => (<CurrentFace />)} />
+            <Route path="/end" exact component={() => (<EndLanding />)} />
+            <Route path="/*" exact component={() => (<FourOhFour />)} />
+            <Footer />
+          </Switch>
+        </div>
       </Router>
-      
-      );
+
+    );
   }
 }
 

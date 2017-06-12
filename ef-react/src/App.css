@@ -87,7 +87,7 @@ h1 {
 }
 
 .nav-li a:hover {
-  color: rgba(255,243,0,1);
+  color: rgba(255,117,0,1);
   text-decoration: underline;
 }
 
@@ -105,5 +105,14 @@ h1 {
 }
 
 .footer-h1 a {
-
+  text-decoration: none;
 }
+
+
+/*---------START LANDING PAGE---------*/
+
+.start-landing-wrapper {
+  padding: 10px 50px;
+  text-align: center;
+}
+

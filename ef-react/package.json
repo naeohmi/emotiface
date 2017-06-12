@@ -5,11 +5,14 @@
   "dependencies": {
     "ajax": "0.0.4",
     "axios": "^0.16.2",
+    "clmtrackr": "^1.0.1",
+    "cloudinary": "^1.9.0",
     "jquery": "^3.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-webcam": "^0.2.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
