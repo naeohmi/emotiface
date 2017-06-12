@@ -45,7 +45,7 @@ class CurrentFace extends Component {
                     console.log("result", result.url);
                     var imgUrl = result.url;
                     //assigns URL to state
-                    innerThis.ocr(imgUrl);
+                    
                     innerThis.setState({ //yay inner this! :)
                         imgUrl
                     })
@@ -59,16 +59,16 @@ class CurrentFace extends Component {
     }
     //form where user can update the barcode, needed to add this state change
     handleChange(event) {
-        let info = event.target.value
+        // let info = event.target.value
         this.setState({
-            upcFromPhoto: info
+            // upcFromPhoto: info
         })
     }
     //user edit barcode from photo state change on submit
     handleSubmit(event) {
         event.preventDefault();
         this.setState({
-            upcFromPhoto: event.target.value
+            // upcFromPhoto: event.target.value
         })
     }
 

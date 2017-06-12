@@ -130,3 +130,11 @@ h1 {
 .results-emotion {
   word-wrap: break-word;
 }
+
+#face_video_canvas {
+  display: block;
+}
+
+#face_video {
+  display: none;
+}
