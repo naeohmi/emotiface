@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
-import ajax from 'ajax';
+// import axios from 'axios';
+// import ajax from 'ajax';
 // import Clmtrackr from './libraries/Clmtrackr';
 // import clmtrackr from 'clmtrackr';
 import StartLanding from './components/StartLanding';
@@ -10,7 +10,6 @@ import EmotionToDo from './components/EmotionToDo';
 import EndLanding from './components/EndLanding';
 import AboutPage from './components/AboutPage';
 import FourOhFour from './components/FourOhFour';
-import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import {
   BrowserRouter as Router,
@@ -55,7 +54,7 @@ class App extends Component {
             <Route path="/play/action" exact component={() => (<CurrentFace />)} />
             <Route path="/end" exact component={() => (<EndLanding />)} />
             <Route path="/*" exact component={() => (<FourOhFour />)} />
-            <Footer />
+            
           </Switch>
         </div>
       </Router>
