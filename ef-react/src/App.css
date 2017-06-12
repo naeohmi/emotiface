@@ -1,24 +1,23 @@
-.App {
-  text-align: center;
+/*COLORS:
+red: #FF0022 rgba(255,0,34,1);
+orange: #FF7500 rgba(255,117,0,1);
+yellow: #fff300 rgba(255,243,0,1);
+green: #00FF0E rgba(0,255,14,1);
+blue-light: #00faff rgba(0,250,255,1);
+blue-mid: #0084FF rgba(0,132,255,1);
+blue-darK: #0500FF rgba(5,0,255,1);
+purple:#BB35F2 rgba(187,53,242,1);
+pink: #FE2EE1 rgba(254,46,225,1);*/
+
+@import url('https://fonts.googleapis.com/css?family=Basic|Chelsea+Market|Fredericka+the+Great');
+
+body {
+  /*font-family: 'Chelsea Market', cursive;*/
+  font-family: 'Basic', sans-serif; 
+  /*font-family: 'Fredericka the Great', cursive;*/
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h1 {
+  font-family: 'Chelsea Market', cursive;
 }
