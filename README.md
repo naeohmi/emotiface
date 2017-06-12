@@ -1,6 +1,8 @@
 # Emotiface (Online Game)
 ## Project 4 - &#169; Naomi Meyer 
 
+![logo](/images/logo.png)
+
 ### Description: 
  
 A bright and colorful game using facial recognition and emotion detection AI to have fun making faces! 

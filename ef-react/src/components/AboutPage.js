@@ -12,6 +12,7 @@ class AboutPage extends Component {
         return (
             <div className="about-page-wrapper">
                 <h1>About</h1>
+                <img src="../public/images/logo.png" alt="logo"/>
             </div>
         );
     }
