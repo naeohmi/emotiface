@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { jquery as $ } from 'jquery';
 import config from './config'
 import aws from 'aws-sdk';
-import affdex from 'affdex-licode';
+import Affdex from 'affdex-licode';
 
 import CurrentEmotion from './CurrentEmotion';
 
@@ -20,39 +20,66 @@ class EmotionToDo extends Component {
     }
 
     componentDidMount() {
-        this.setUp();
-
+        this.setUpStates();
+        this.onWebcamConnectSuccess();
+        this.onWebcamConnectFailure();
+        this.onStopSuccess();
     }
     //detector logs the logs (not console.logs!)
     log(node_name, msg) {
-        $(node_name).append("<span>" + msg + "</span><br />")
+        // $(node_name).append("<span>" + msg + "</span><br />")
     }
 
     setUpStates() {
-        let thisDiv = $("#affdex-elements")[0];
+        // console.log($());
+        // let thisDiv = $("#affdex-elements")[0];
+        let thisDiv = document.querySelector("#affdex-elements");
+        console.log(thisDiv);
+        console.log(Affdex);
+
+        // let faces = new Affdex.FaceDetectorMode.LARGE_FACES;
         this.setState({
             divRoot: thisDiv,
             width: 640,
-            height: 480,
-            faceMode: affdex.FaceDetectorMode.LARGE_FACES,
-            //Construct a CameraDetector and specify the image width / height and face detector mode.
-            detector: new affdex.CameraDetector(
+            height: 480
+            // faceMode: faces
+        })
+
+        // this.setState({
+
+        //     //Construct a CameraDetector and specify the image width / height and face detector mode.
+        //     detector: detect.CameraDetector(
+        //         this.state.divRoot,
+        //         this.state.width,
+        //         this.state.height,
+        //         this.state.faceMode
+        //     ),
+        //     faceMode: Affdex.FaceDetectorMode.LARGE_FACES
+        // })
+    }
+
+    setupCamera() {
+        let detector = new Affdex.CameraDetector(
                 this.state.divRoot,
                 this.state.width,
                 this.state.height,
                 this.state.faceMode
-            )
+            );
+        this.setState({
+            //Construct a CameraDetector and specify the image width / height and face detector mode.
+            detector: detector,
         })
     }
 
-    // hello() {
-    //     console.log(aws);
-    //     aws.config.update({
-    //         accessKeyId: config.awsAccessKeyID,
-    //         secretAccessKey: config.awsSecretAccessKey,
-    //         region: config.awsRegion
-    //     })
-    // }
+    hello() {
+        console.log(aws);
+        aws.config.update({
+            accessKeyId: config.awsAccessKeyID,
+            secretAccessKey: config.awsSecretAccessKey,
+            region: config.awsRegion,
+            bucket: config.awsS3Bucket
+        })
+    }
     //SDK Needs to create video and canvas nodes in the DOM in order to function
     //Here we are adding those nodes a predefined div.
     setUp() {
@@ -62,6 +89,7 @@ class EmotionToDo extends Component {
         this.state.detector.detectAllExpressions();
         this.state.detector.detectAllEmojis();
         this.state.detector.detectAllAppearance();
+        
 
         //Add a callback to notify when the detector is initialized and ready for running.
         this.state.detector.addEventListener("onInitializeSuccess", function () {
