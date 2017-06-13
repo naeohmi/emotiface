@@ -38,5 +38,5 @@ CREATE TABLE E4 (
     pts INTEGER
 );
 
-INSERT INTO E0(emoName, imgUrl, pts)
+INSERT INTO E0 (emoName, imgUrl, pts)
 VALUES ('happy', 'www.happy.com', 3);

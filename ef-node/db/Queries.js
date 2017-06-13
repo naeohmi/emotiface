@@ -10,7 +10,7 @@ class Queries {
             "surprised"
         ];
         this.shuffledEmotions = [];
-        this.shuffleEmotions();
+        
     }
     //Fisher-Yates (aka Knuth) Shuffle - shuffle algorithm to go through emotions and make sure to each emotion once, randomly
     //thanks stack overflow
@@ -36,46 +36,42 @@ class Queries {
         console.log("zero", this.shuffledEmotions[0][0]);
         console.log("one", this.shuffledEmotions[0][1]);
     }
-    addAllToDb() {
-        this.addEmo0();
-        this.addEmo1();
-        this.addEmo2();
-        this.addEmo3();
-        this.addEmo4();
+    addAllToDb(req, res, next) {
+        this.shuffleEmotions();
+        this.addEmo0(req, res, next);
+        this.addEmo1(req, res, next);
+        this.addEmo2(req, res, next);
+        this.addEmo3(req, res, next);
+        this.addEmo4(req, res, next);
     }
     addEmo0(req, res, next) {
         config.db.none("INSERT INTO E0 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][0]])
             .catch(err => {
                 console.log('addEmo0 error');
-                return next(err);
             })
     }
     addEmo1(req, res, next) {
         config.db.none("INSERT INTO E1 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][1]])
             .catch(err => {
                 console.log('addEmo1 error');
-                return next(err);
             })
     }
     addEmo2(req, res, next) {
         config.db.none("INSERT INTO E2 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][2]])
             .catch(err => {
                 console.log('addEmo2 error');
-                return next(err);
             })
     }
     addEmo3(req, res, next) {
         config.db.none("INSERT INTO E3 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][3]])
             .catch(err => {
                 console.log('addEmo3 error');
-                return next(err);
             })
     }
     addEmo4(req, res, next) {
         config.db.none("INSERT INTO E4 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][4]])
             .catch(err => {
                 console.log('addEmo4 error');
-                return next(err);
             })
     }
     //adds up all the points and returns the sum as total score

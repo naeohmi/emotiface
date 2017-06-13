@@ -10,9 +10,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/emo', (req, res, next) => {
-db.shuffleEmotions();
+  db.addAllToDb();
   res.render('index', {
-    title: 'EMO'
+    title: 'emo'
   });
 });
 
