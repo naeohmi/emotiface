@@ -4,7 +4,7 @@ import config from './config'
 import aws from 'aws-sdk';
 import Affdex from 'affdex-licode';
 
-import CurrentEmotion from './CurrentEmotion';
+// import CurrentEmotion from './CurrentEmotion';
 
 class EmotionToDo extends Component {
 
@@ -193,7 +193,7 @@ class EmotionToDo extends Component {
             <div className="emotion-todo-wrapper">
                 <h1>EmotionToDo</h1>
 
-                <CurrentEmotion />
+                {/*<CurrentEmotion />*/}
 
                 <div className="container-fluid">
                     <div className="row">

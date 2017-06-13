@@ -9,8 +9,9 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get('/emo', (req, res, next) => {
+router.get('/emo/:id', (req, res, next) => {
   db.addAllToDb();
+  db.selectRound();
   res.render('index', {
     title: 'emo'
   });
