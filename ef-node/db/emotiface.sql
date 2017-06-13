@@ -38,5 +38,20 @@ CREATE TABLE E4 (
     pts INTEGER
 );
 
+CREATE TABLE game (
+    ID SERIAL PRIMARY KEY,
+    E0id INTEGER,
+    E1id INTEGER,
+    E2id INTEGER,
+    E3id INTEGER,
+    E4id INTEGER,
+    FOREIGN KEY (E0id) REFERENCES E0(ID),
+    FOREIGN KEY (E1id) REFERENCES E1(ID),
+    FOREIGN KEY (E2id) REFERENCES E2(ID),
+    FOREIGN KEY (E3id) REFERENCES E3(ID),
+    FOREIGN KEY (E4id) REFERENCES E4(ID)
+);
+
 INSERT INTO E0 (emoName, imgUrl, pts)
 VALUES ('happy', 'www.happy.com', 3);
+
