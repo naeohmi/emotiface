@@ -9,6 +9,8 @@ class Queries {
             "silly",
             "surprised"
         ];
+        this.shuffledEmotions = [];
+        this.shuffleEmotions();
     }
     //Fisher-Yates (aka Knuth) Shuffle - shuffle algorithm to go through emotions and make sure to each emotion once, randomly
     //thanks stack overflow
@@ -29,16 +31,54 @@ class Queries {
 
     //shuffle emotions array so each round of play is unique order
     shuffleEmotions() {
-        let shuffledEmos = this.shuffleAlgo(this.emotions);
-        console.log(shuffledEmos);
+        let emos = this.shuffleAlgo(this.emotions);
+        this.shuffledEmotions.push(emos);
+        console.log("zero", this.shuffledEmotions[0][0]);
+        console.log("one", this.shuffledEmotions[0][1]);
     }
-
-
-    addRound(req, res, next) {
-        console.log('req.body:', req.body)
-        // config.db.none(`INSERT INTO `)
+    addAllToDb() {
+        this.addEmo0();
+        this.addEmo1();
+        this.addEmo2();
+        this.addEmo3();
+        this.addEmo4();
     }
-
+    addEmo0(req, res, next) {
+        config.db.none("INSERT INTO E0 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][0]])
+            .catch(err => {
+                console.log('addEmo0 error');
+                return next(err);
+            })
+    }
+    addEmo1(req, res, next) {
+        config.db.none("INSERT INTO E1 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][1]])
+            .catch(err => {
+                console.log('addEmo1 error');
+                return next(err);
+            })
+    }
+    addEmo2(req, res, next) {
+        config.db.none("INSERT INTO E2 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][2]])
+            .catch(err => {
+                console.log('addEmo2 error');
+                return next(err);
+            })
+    }
+    addEmo3(req, res, next) {
+        config.db.none("INSERT INTO E3 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][3]])
+            .catch(err => {
+                console.log('addEmo3 error');
+                return next(err);
+            })
+    }
+    addEmo4(req, res, next) {
+        config.db.none("INSERT INTO E4 (emoName)" + "VALUES($1);", [this.shuffledEmotions[0][4]])
+            .catch(err => {
+                console.log('addEmo4 error');
+                return next(err);
+            })
+    }
+    //adds up all the points and returns the sum as total score
     addPoints(req, res, next) {
         config.db.any(`SELECT (SELECT SUM(E0.pts) FROM E0) + (SELECT SUM(E1.pts) FROM E1) + (SELECT SUM(E2.pts) FROM E2) + (SELECT SUM(E3.pts) FROM E3) + (SELECT SUM(E4.pts) FROM E4);`)
             .then(sum => {
@@ -48,8 +88,6 @@ class Queries {
                 return next(err);
             })
     }
-
-
 };
 
 module.exports = Queries;
