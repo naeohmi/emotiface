@@ -5,10 +5,10 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer-wrapper">
-                <h1 className="footer-h1">
-                    made with <span>&hearts;</span>by:
-                    <a href="www.github.com/naeohmi">naeohmi</a>
-                </h1>
+                <h2 className="footer-h2">
+                    made with <span>&hearts;</span> by: 
+                    <a href="www.github.com/naeohmi"> naeohmi</a>
+                </h2>
             </div>
         );
     }

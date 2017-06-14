@@ -19,9 +19,9 @@ class StartLanding extends Component {
     render() {
         return (
             <div className="start-landing-wrapper">
-                <h1>welcome to:</h1>
+                <h1 className="title">welcome to:</h1>
                 {/*<a href="/"><img src="/images/logo-big.png" alt="logo-big"/></a>*/}
-                <a href="/"><img src="/images/logo.png" alt="logo" /></a>
+                <a className="main-logo"href="/"><img src="/images/logo.png" alt="logo" /></a>
                 <div className="start-info">
                     {/*<input
                         type="text"
@@ -33,7 +33,7 @@ class StartLanding extends Component {
                         <ul className="start-btn-ul">
                             <li className="start-btn-li">
                                 <NavLink to="/play/setup">
-                                    click to start!
+                                    <p>click to start!</p>
                             </NavLink>
                             </li>
                         </ul>
