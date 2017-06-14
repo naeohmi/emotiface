@@ -5,8 +5,8 @@ import './App.css';
 // import Clmtrackr from './libraries/Clmtrackr';
 // import clmtrackr from 'clmtrackr';
 import StartLanding from './components/StartLanding';
-import CurrentFace from './components/CurrentFace';
-import EmotionToDo from './components/EmotionToDo';
+import CurrentFace from './components/game/CurrentFace';
+import EmotionToDo from './components/game/EmotionToDo';
 import EndLanding from './components/EndLanding';
 import AboutPage from './components/AboutPage';
 import FourOhFour from './components/FourOhFour';
@@ -16,6 +16,8 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+
+import Round from './components/game/Round';
 
 class App extends Component {
   constructor(props) {
@@ -52,6 +54,9 @@ class App extends Component {
             <Route path="/about" exact component={() => (<AboutPage />)} />
             <Route path="/play/setup" exact component={() => (<EmotionToDo />)} />
             <Route path="/play/action" exact component={() => (<CurrentFace />)} />
+
+            <Route path="/play/:id" component={Round} />
+
             <Route path="/end" exact component={() => (<EndLanding />)} />
             <Route path="/*" exact component={() => (<FourOhFour />)} />
             

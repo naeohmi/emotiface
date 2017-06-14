@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { jquery as $ } from 'jquery';
-import config from './config'
+import config from '../config'
 import aws from 'aws-sdk';
 import Affdex from 'affdex-licode';
 

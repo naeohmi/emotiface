@@ -84,6 +84,10 @@ class CurrentFace extends Component {
                     this.getAllResponseHeaders();
                     
                     if(this.response) {
+
+                        setInterval(5000);
+  
+
                         console.log(this.response);
                         console.log('id: ', this.response.id);
                     }
@@ -132,7 +136,7 @@ class CurrentFace extends Component {
 
                     <div className="sceenshot">
                         {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
-
+                        
                     </div>
                 </div>
             </div>
