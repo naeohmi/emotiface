@@ -113,9 +113,9 @@ class CurrentFace extends Component {
                     //takes the full object and grabs just the emotion data to check from
                     .then(obj => {
                         console.log('obj', obj)
-                        if (!obj.frames[0].people[0].emotions) {
-                            alert(`Sorry, we can't find a face in that photo, please try again`)
-                        }
+                        // if (!obj.frames[0].people[0].emotions) {
+                            // alert(`Sorry, we can't find a face in that photo, please try again`)
+                        // }
                         let emotion = obj.frames[0].people[0].emotions
                         console.log(`Emotions found: ${emotion}`)
                         return emotion
@@ -134,9 +134,9 @@ class CurrentFace extends Component {
                         console.log(`emotions found: anger:${this.state.anger}, joy:${this.state.joy}`)
                         return emotion
                     })
-                    // .then(emotion => {
-                        // this.showEmotions()
-                    // })
+                // .then(emotion => {
+                // this.showEmotions()
+                // })
             })
             //to catch and log any errors
             .catch(err => {
@@ -149,23 +149,28 @@ class CurrentFace extends Component {
         if (this.state.emotion !== undefined) {
             return (
                 <div className="emo-found">
-                    <h1 className="emo-title">
-                        You scored:
-                    </h1>
-                    <h3 className="emo-list">
-                        Anger: {this.state.anger} <br />
-                        Disgust: {this.state.disgust} <br />
-                        Fear: {this.state.fear} <br />
-                        Joy: {this.state.joy} <br />
-                        Sadness: {this.state.sadness} <br />
-                        Surprise: {this.state.surprise} <br />
-                    </h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><h2 className="emo-title">You scored:</h2></td>
+                            </tr>
+
+                            <tr>
+                                <td className="emo-list"><h3> <img src="/images/E0.png" alt="emoticon" /> Anger: {this.state.anger} </h3></td>
+                                <td className="emo-list"><h3> <img src="/images/E3.png" alt="emoticon" /> Silly: {this.state.disgust} </h3></td>
+                                {/*<td className="emo-list"><h3> Fear: {this.state.fear} </h3></td>*/}
+                                <td className="emo-list"><h3> <img src="/images/E1.png" alt="emoticon" /> Joy: {this.state.joy} </h3></td>
+                                <td className="emo-list"><h3> <img src="/images/E2.png" alt="emoticon" /> Sadness: {this.state.sadness} </h3></td>
+                                <td className="emo-list"><h3> <img src="/images/E4.png" alt="emoticon" /> Surprise: {this.state.surprise} </h3></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             )
         }
     }
-        
-    
+
+
 
     render() {
         return (
