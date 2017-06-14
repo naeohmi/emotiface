@@ -47,7 +47,7 @@ class CurrentFace extends Component {
                         })
                         //using this = Prom is now equal to imgUrl because its now a promise (using es7 syntax)
                         resolve(imgUrl)
-                        console.log('within the if', result.url);
+                        // console.log('within the if', result.url);
 
                     } else {
                         console.log(`err: ${err}`);
@@ -62,53 +62,58 @@ class CurrentFace extends Component {
         })
 
         Prom.then(data => {
-            console.log('data: ', data);
-            this.checkEmotionPostUrl(data);
+            // console.log('data: ', data);
+            this.checkEmotions(data);
         })
 
     }
-
-    checkEmotionAll(data) {
-
-        axios.all([this.checkEmotionPostUrl(data), this.checkEmotionGetId(12345)])
-        .then(axios.spread((post, get) => {
-            const idFromPost = post.data.id;
-            const emotionJson = get.data //.people[0].emotions[0] etc....
-
-            console.log(idFromPost)
-            console.log(emotionJson)
-        }))
-        .catch(err => {
-            console.log(err);
-        })
-
-    }
-
-    checkEmotionPostUrl(imgUrl) {
-        const setRequestHeader = {
+    //take the screenshot as jpeg in URL and send to Kairos API to check the emotion reading from AI
+    checkEmotions(imgUrl) {
+        //Kairos requires a POST to start which returns the ID
+        const setRequestHeader1 = {
+            method: "POST",
             headers: {
-                "Accept": "application/json",
                 "app_id": "9399f510",
                 "app_key": "4d5769c498c69f04239bb8da41668afe"
             }
         }
-        axios.post(`https://api.kairos.com/v2/media?source=${imgUrl}`, [setRequestHeader]);
-        
+        //tried axios, there is an issue with axios and kairos with the config headers, so needed to use fetch which works! yay :)
+        fetch(`https://api.kairos.com/v2/media?source=${imgUrl}`, setRequestHeader1)
+            .then(data => {
+                return data.json()
+            })
+            //returns the ID from kairos API then GET the emotion JSON
+            .then(d => {
+                // console.log('data', d.id)
+                return d.id
+            })
+            //after the POST finishes and the ID is returned, make a GET req to grab the JSON
+            .then(id => {
+                const setRequestHeader2 = {
+                    //need to make a new header with the different method
+                    method: "GET",
+                    headers: {
+                        "app_id": "9399f510",
+                        "app_key": "4d5769c498c69f04239bb8da41668afe"
+                    }
+                }
+                fetch(`https://api.kairos.com/v2/media/${id}`, setRequestHeader2)
+                    //returns the full json object, and convert to json
+                    .then(object => {
+                        return object.json()
+                    })
+                    //takes the full object and grabs just the emotion data to check from
+                    .then(obj => {
+                        console.log('obj', obj)
+                        console.log('emotions:', obj.frames[0].people[0].emotions)
+                    })
+
+            })
+            //to catch and log any errors
+            .catch(err => {
+                console.log(err)
+            })
     }
-
-    checkEmotionGetId(id) {
-        const setRequestHeader = {
-            headers: {
-                "Accept": "application/json",
-                "app_id": "9399f510",
-                "app_key": "4d5769c498c69f04239bb8da41668afe"
-            }
-        }
-        return axios.get(`https://api.kairos.com/v2/media/${id}`, setRequestHeader)
-    }
-
-
-
     render() {
         return (
             <div className="container">
