@@ -254,6 +254,15 @@ h1 {
   display: none;
 }
 
+/*---------CURRENT FACE---------*/
+.emo-list img {
+  width: 150px;
+  height: 150px;
+}
+
+
+
+
 /*---------MOBILE---------*/
 
 @media only screen and (max-width: 667px) {

@@ -52,7 +52,7 @@ class App extends Component {
               componentWillMount={this.componentWillMount}
               />)} />
             <Route path="/about" exact component={() => (<AboutPage />)} />
-            <Route path="/play/setup" exact component={() => (<EmotionToDo />)} />
+            {/*<Route path="/play/setup" exact component={() => (<EmotionToDo />)} />*/}
             <Route path="/play/action" exact component={() => (<CurrentFace />)} />
 
             <Route path="/play/:id" component={Round} />

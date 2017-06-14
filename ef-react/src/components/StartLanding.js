@@ -32,7 +32,7 @@ class StartLanding extends Component {
                     <div className="start-btn-div">
                         <ul className="start-btn-ul">
                             <li className="start-btn-li">
-                                <NavLink to="/play/setup">
+                                <NavLink to="/play/action">
                                     <p>click to start!</p>
                             </NavLink>
                             </li>
