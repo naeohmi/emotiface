@@ -9,9 +9,17 @@ class CurrentFace extends Component {
         super(props);
         this.state = {
             screenshot: null,
-            imgUrl: null
+            imgUrl: null,
+            emotion: undefined,
+            anger: undefined,
+            disgust: undefined,
+            fear: undefined,
+            joy: undefined,
+            sadness: undefined,
+            surprise: undefined
         }
         this.handleClick = this.handleClick.bind(this);
+        this.checkEmotions = this.checkEmotions.bind(this);
     }
     //grabs the image from the webcam after user clicks button
     handleClick(event) {
@@ -105,15 +113,60 @@ class CurrentFace extends Component {
                     //takes the full object and grabs just the emotion data to check from
                     .then(obj => {
                         console.log('obj', obj)
-                        console.log('emotions:', obj.frames[0].people[0].emotions)
+                        if (!obj.frames[0].people[0].emotions) {
+                            alert(`Sorry, we can't find a face in that photo, please try again`)
+                        }
+                        let emotion = obj.frames[0].people[0].emotions
+                        console.log(`Emotions found: ${emotion}`)
+                        return emotion
                     })
-
+                    .then(emotion => {
+                        this.setState({
+                            emotion: emotion,
+                            anger: emotion.anger,
+                            disgust: emotion.disgust,
+                            fear: emotion.fear,
+                            joy: emotion.joy,
+                            sadness: emotion.sadness,
+                            surprise: emotion.surprise
+                        })
+                        console.log('state: ', this.state.emotion)
+                        console.log(`emotions found: anger:${this.state.anger}, joy:${this.state.joy}`)
+                        return emotion
+                    })
+                    // .then(emotion => {
+                        // this.showEmotions()
+                    // })
             })
             //to catch and log any errors
             .catch(err => {
                 console.log(err)
             })
     }
+    //once we have the emotions returned and have saved them into state, display them here!
+    showEmotions() {
+        console.log('showemotions awake')
+        if (this.state.emotion !== undefined) {
+            return (
+                <div className="emo-found">
+                    <h1 className="emo-title">
+                        You scored:
+                    </h1>
+                    <h3 className="emo-list">
+                        Anger: {this.state.anger} <br />
+                        Disgust: {this.state.disgust} <br />
+                        Fear: {this.state.fear} <br />
+                        Joy: {this.state.joy} <br />
+                        Sadness: {this.state.sadness} <br />
+                        Surprise: {this.state.surprise} <br />
+                    </h3>
+                </div>
+            )
+        }
+    }
+        
+    
+
     render() {
         return (
             <div className="container">
@@ -132,6 +185,9 @@ class CurrentFace extends Component {
                         {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
 
                     </div>
+                </div>
+                <div className="emos">
+                    {this.showEmotions()}
                 </div>
             </div>
         );
