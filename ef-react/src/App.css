@@ -254,6 +254,48 @@ h1 {
   display: none;
 }
 
+/*---------ROUND---------*/
+
+.round {
+  background-color: rgba(222,222,222,1);
+  box-shadow: 2px 2px 5px 6px rgba(222,222,222,.5);
+}
+
+.round img {
+  width: 200px;
+}
+
+.emo-name {
+  color: black;
+  text-shadow: 1px 1px 1px #000;
+
+}
+
+.E0 {
+  background-color: rgba(255,0,34,.8);
+
+}
+
+.E1 {
+  background-color: rgba(187,53,242,.8);
+
+}
+
+.E2 {
+  background-color: rgba(0,255,14,.8);
+
+}
+
+.E3 {
+  background-color: rgba(0,132,255,.8);
+
+}
+
+.E4 {
+  background-color: rgba(255,117,0,.8);
+
+}
+
 /*---------CURRENT FACE---------*/
 .emo-list img {
   width: 150px;

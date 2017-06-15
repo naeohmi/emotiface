@@ -112,10 +112,13 @@ class CurrentFace extends Component {
                     })
                     //takes the full object and grabs just the emotion data to check from
                     .then(obj => {
-                        console.log('obj', obj)
-                        // if (!obj.frames[0].people[0].emotions) {
-                            // alert(`Sorry, we can't find a face in that photo, please try again`)
-                        // }
+                        // console.log('obj', obj)
+                        // if (obj.frames[0].people[0].emotions === undefined) {
+                            if (obj.frames[0].people[0] === undefined) {
+                                console.log("face not found")
+                                alert(`Sorry, we can't find a face in that photo, please try again`)
+                                //TO DO --> refresh page AUTO
+                            }
                         let emotion = obj.frames[0].people[0].emotions
                         console.log(`Emotions found: ${emotion}`)
                         return emotion
