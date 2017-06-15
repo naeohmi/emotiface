@@ -2,7 +2,7 @@
   "name": "ef-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://naeohmi.github.io/emotiface/ef-react",
+  "homepage": "https://naeohmi.github.io/emotiface",
   "dependencies": {
     "affdex-licode": "0.0.25",
     "ajax": "0.0.4",
@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && gh-pages -d build"
   }
 }
