@@ -70,14 +70,12 @@ body {
   font-family: 'Basic', sans-serif; 
   /*font-family: 'Fredericka the Great', cursive;*/
   /*margin: 0 auto;*/
-  
 }
 
 
 h1 {
   font-family: 'Chelsea Market', cursive;
 }
-
 
 /*---------NAVIGATION---------*/
 
@@ -173,7 +171,8 @@ h1 {
 .start-landing-wrapper {
   padding: 40px 20px 0px 20px;
   text-align: center;
-  box-shadow: 0px 20px 10px #888888;
+  
+  /*box-shadow: 0px 20px 10px #888888;*/
 }
 
 .title {
@@ -306,8 +305,28 @@ h1 {
   height: 150px;
 }
 
+.emo-name {
+  font-size: 2.5em;
+  color: black;
+  
+}
 
+.container {
+  align-content: center;
+  text-align: center;
+}
 
+.small-title {
+  font-family: 'Chelsea Market', cursive;
+	font-size: 3em;
+	color: #000;
+	text-shadow: 1px 1px 1px #000, 2px 2px 3px rgba(255,243,0,1);
+	text-transform: uppercase;
+}
+.webcam-cam {
+  /*border: 1px solid #ddd;*/
+  /*padding: 0px;*/
+}
 
 /*---------MOBILE---------*/
 

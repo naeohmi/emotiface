@@ -6,11 +6,11 @@ class Round extends Component {
         this.state = {
             emotions: {
                 "E0": "angry",
-                "E1": "happy",
-                "E2": "sad",
-                "E3": "silly",
-                "E4": "surprised"
-                // "E5": "fear"
+                "E1": "disgust",
+                "E2": "fear",
+                "E3": "joy",
+                "E4": "sadness",
+                "E5": "surprise"
             }
         }
     }

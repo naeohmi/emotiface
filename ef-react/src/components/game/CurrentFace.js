@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-// import Cors from 'cors';
-import axios from 'axios';
 import { Bootstrap, Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
 
 class CurrentFace extends Component {
@@ -18,6 +16,14 @@ class CurrentFace extends Component {
             joy: undefined,
             sadness: undefined,
             surprise: undefined
+            // emotions: {
+                // "E0": "angry",
+                // "E1": "disgust",
+                // "E2": "fear",
+                // "E3": "joy",
+                // "E4": "sadness",
+                // "E5": "surprise"
+            // }
         }
         this.handleClick = this.handleClick.bind(this);
         this.checkEmotions = this.checkEmotions.bind(this);
@@ -74,7 +80,6 @@ class CurrentFace extends Component {
             // console.log('data: ', data);
             this.checkEmotions(data);
         })
-
     }
     //take the screenshot as jpeg in URL and send to Kairos API to check the emotion reading from AI
     checkEmotions(imgUrl) {
@@ -156,16 +161,16 @@ class CurrentFace extends Component {
                     <table>
                         <tbody>
                             <tr>
-                                <td><h2 className="emo-title">You scored:</h2></td>
+                                <td><h2 className="small-title">You scored:</h2></td>
                             </tr>
 
                             <tr>
-                                <td className="emo-list"><h3> <img src="/images/E0.png" alt="emoticon" /> Anger: {this.state.anger} </h3></td>
-                                <td className="emo-list"><h3> <img src="/images/E3.png" alt="emoticon" /> Silly: {this.state.disgust} </h3></td>
-                                {/*<td className="emo-list"><h3> Fear: {this.state.fear} </h3></td>*/}
-                                <td className="emo-list"><h3> <img src="/images/E1.png" alt="emoticon" /> Joy: {this.state.joy} </h3></td>
-                                <td className="emo-list"><h3> <img src="/images/E2.png" alt="emoticon" /> Sadness: {this.state.sadness} </h3></td>
-                                <td className="emo-list"><h3> <img src="/images/E4.png" alt="emoticon" /> Surprise: {this.state.surprise} </h3></td>
+                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E0.png" alt="emoticon" /> Anger: {this.state.anger} </h3></td>
+                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E1.png" alt="emoticon" /> Disgust: {this.state.disgust} </h3></td>
+                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E2.png" alt="emoticon" /> Fear: {this.state.fear} </h3></td>
+                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E3.png" alt="emoticon" /> Joy: {this.state.joy} </h3></td>
+                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E4.png" alt="emoticon" /> Sadness: {this.state.sadness} </h3></td>
+                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E5.png" alt="emoticon" /> Surprise: {this.state.surprise} </h3></td>
                             </tr>
                         </tbody>
                     </table>
@@ -181,16 +186,17 @@ class CurrentFace extends Component {
             <div className="container">
                 <Grid>
                     <Row>
-                        <Col xs={6} md={4}>
-                            <Thumbnail>
-                                <h3>Take a photo</h3>
-                                <div className="webcam">
+                        <Col md={4}>
+                            <Thumbnail >
+                                <h3 className="small-title">Take a photo</h3>
+                                <div className="webcam" >
                                     <Webcam
                                         audio={false}
-                                        height={400}
+                                        height={500}
                                         ref={node => this.webcam = node}
                                         screenshotFormat="image/jpeg"
-                                        width={400}
+                                        width={500}
+                                        className="webcam-cam"
                                     />
                                 </div>
                                 <br />
@@ -201,9 +207,9 @@ class CurrentFace extends Component {
                             </Thumbnail>
                         </Col>
 
-                        <Col xs={6} md={4}>
+                        <Col md={4}>
                             <Thumbnail>
-                                <h3>Here's your photo!</h3>
+                                <h3 className="small-title">Here's your photo!</h3>
                                 <div className="sceenshot">
                                     {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
 

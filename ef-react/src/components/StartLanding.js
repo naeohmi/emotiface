@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Footer from './Footer';
-
+import { Bootstrap, Jumbotron } from 'react-bootstrap';
 
 class StartLanding extends Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class StartLanding extends Component {
     render() {
         return (
             <div className="start-landing-wrapper">
+                {/*<Jumbotron>*/}
                 <h1 className="title">welcome to:</h1>
                 {/*<a href="/"><img src="/images/logo-big.png" alt="logo-big"/></a>*/}
                 <a className="main-logo"href="/"><img src="/images/logo.png" alt="logo" /></a>
@@ -40,6 +41,7 @@ class StartLanding extends Component {
                         </ul>
                     </div>
                 </div>
+                {/*</Jumbotron>*/}
                 <Footer />
             </div>
         );
