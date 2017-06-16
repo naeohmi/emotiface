@@ -144,7 +144,7 @@ h1 {
 /*---------FOOTER---------*/
 
 .footer-wrapper {
-  background-color: rgba(222,222,222,1);
+  /*background-color: rgba(222,222,222,1);*/
   position: fixed;
   /*text-align: right;*/
   bottom: 0px;
@@ -171,8 +171,9 @@ h1 {
 /*---------START LANDING PAGE---------*/
 
 .start-landing-wrapper {
-  padding: 10px 50px;
+  padding: 40px 20px 0px 20px;
   text-align: center;
+  box-shadow: 0px 20px 10px #888888;
 }
 
 .title {
@@ -180,6 +181,9 @@ h1 {
 	color: #000;
 	text-shadow: 1px 1px 1px #000, 3px 3px 5px rgba(255,243,0,1);
 	text-transform: uppercase;
+}
+.start-info {
+  padding: 30px;
 }
 
 .main-logo img {
@@ -202,7 +206,7 @@ h1 {
   list-style: none;
   text-transform: uppercase;
   font-family: 'Chelsea Market', cursive;
-  
+  padding: 20px 20px 20px 20px;
   
 }
 

@@ -3,6 +3,7 @@ import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
 // import Cors from 'cors';
 import axios from 'axios';
+import { Bootstrap, Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
 
 class CurrentFace extends Component {
     constructor(props) {
@@ -114,11 +115,11 @@ class CurrentFace extends Component {
                     .then(obj => {
                         // console.log('obj', obj)
                         // if (obj.frames[0].people[0].emotions === undefined) {
-                            if (obj.frames[0].people[0] === undefined) {
-                                console.log("face not found")
-                                alert(`Sorry, we can't find a face in that photo, please try again`)
-                                //TO DO --> refresh page AUTO
-                            }
+                        if (obj.frames[0].people[0] === undefined) {
+                            console.log("face not found")
+                            alert(`Sorry, we can't find a face in that photo, please try again`)
+                            //TO DO --> refresh page AUTO
+                        }
                         let emotion = obj.frames[0].people[0].emotions
                         console.log(`Emotions found: ${emotion}`)
                         return emotion
@@ -178,25 +179,46 @@ class CurrentFace extends Component {
     render() {
         return (
             <div className="container">
-                <div className="webcam">
-                    <Webcam
-                        audio={false}
-                        height={400}
-                        ref={node => this.webcam = node}
-                        screenshotFormat="image/jpeg"
-                        width={400}
-                    />
-                    <br />
-                    <button className="searchProduct" onClick={this.handleClick}>Save photo</button>
+                <Grid>
+                    <Row>
+                        <Col xs={6} md={4}>
+                            <Thumbnail>
+                                <h3>Take a photo</h3>
+                                <div className="webcam">
+                                    <Webcam
+                                        audio={false}
+                                        height={400}
+                                        ref={node => this.webcam = node}
+                                        screenshotFormat="image/jpeg"
+                                        width={400}
+                                    />
+                                </div>
+                                <br />
+                                <p>
+                                    {/*<button className="searchProduct" onClick={this.handleClick}>Save photo</button>*/}
+                                    <Button bsStyle="primary" onClick={this.handleClick}>Save photo</Button>
+                                </p>
+                            </Thumbnail>
+                        </Col>
 
-                    <div className="sceenshot">
-                        {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
+                        <Col xs={6} md={4}>
+                            <Thumbnail>
+                                <h3>Here's your photo!</h3>
+                                <div className="sceenshot">
+                                    {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
 
-                    </div>
-                </div>
-                <div className="emos">
-                    {this.showEmotions()}
-                </div>
+                                </div>
+                                <p>
+                                    <Button bsStyle="primary">Save!</Button>
+                                </p>
+                            </Thumbnail>
+                        </Col>
+
+                        <div className="emos">
+                            {this.showEmotions()}
+                        </div>
+                    </Row>
+                </Grid>
             </div>
         );
     }
