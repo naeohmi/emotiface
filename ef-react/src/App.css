@@ -6,6 +6,7 @@ green: #00FF0E rgba(0,255,14,1);
 blue-light: #00faff rgba(0,250,255,1);
 blue-mid: #0084FF rgba(0,132,255,1);
 blue-darK: #0500FF rgba(5,0,255,1);
+teal: rgba(0,246,255,1);
 purple:#BB35F2 rgba(187,53,242,1);
 pink: #FE2EE1 rgba(254,46,225,1);
 light-grey: #EEEEEE rgba(238,238,238,1);
@@ -275,30 +276,23 @@ h1 {
 }
 
 .E0 {
-  background-color: rgba(255,0,34,.8);
-
+  color: rgba(255,0,34,1);
 }
-
 .E1 {
-  background-color: rgba(187,53,242,.8);
-
+  color: rgba(0,132,255,1);
 }
-
 .E2 {
-  background-color: rgba(0,255,14,.8);
-
+  color: rgba(0,246,255,1);
 }
-
 .E3 {
-  background-color: rgba(0,132,255,.8);
-
+  color: rgba(187,53,242,1);
 }
-
 .E4 {
-  background-color: rgba(255,117,0,.8);
-
+  color: rgba(0,255,14,1);
 }
-
+.E5 {
+  color: rgba(255,117,0,1);
+}
 /*---------CURRENT FACE---------*/
 .emo-list img {
   width: 150px;
@@ -307,10 +301,27 @@ h1 {
 
 .emo-name {
   font-size: 2.5em;
-  color: black;
-  
+  /*color: black;*/
+  font-family: 'Chelsea Market', cursive;
+
+}
+.emo-score {
+  font-family: 'Chelsea Market', cursive;
+  font-size: 3em;
+  /*color: black;*/
+	/*text-shadow: 1px 2px 1px #00FF0E;*/
+  text-align: center;
+  align-content: center;
 }
 
+td {
+  align-content: center;
+  text-align: center;
+}
+th {
+  align-content: center;
+  text-align: center;
+}
 .container {
   align-content: center;
   text-align: center;
@@ -322,6 +333,8 @@ h1 {
 	color: #000;
 	text-shadow: 1px 1px 1px #000, 2px 2px 3px rgba(255,243,0,1);
 	text-transform: uppercase;
+  text-align: center;
+  align-content: center;
 }
 .webcam-cam {
   /*border: 1px solid #ddd;*/

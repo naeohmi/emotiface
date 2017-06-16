@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-import { Bootstrap, Grid, Row, Col, Thumbnail, Button, Modal } from 'react-bootstrap';
+import { Bootstrap, Grid, Row, Col, Thumbnail, Button, Modal, Table } from 'react-bootstrap';
 
 class CurrentFace extends Component {
     constructor(props) {
@@ -119,7 +119,7 @@ class CurrentFace extends Component {
                     .then(obj => {
                         // console.log('obj', obj)
                         // if (obj.frames[0].people[0].emotions === undefined) {
-                        if (obj.frames[0].people[0] === undefined) {
+                        if (obj.frames === undefined) {
                             console.log("face not found")
                             alert(`Sorry, we can't find a face in that photo, please try again`)
                             //TO DO --> refresh page AUTO
@@ -195,14 +195,9 @@ class CurrentFace extends Component {
                                     {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
 
                                 </div>
-                                <p>
-                                    {/*<Button bsStyle="primary">See Results!</Button>*/}
-                                </p>
+
                             </Thumbnail>
                         </Col>
-
-
-
                         <div className="emos">
 
                             <Button
@@ -210,66 +205,57 @@ class CurrentFace extends Component {
                                 bsSize="large"
                                 onClick={this.openModal}
                                 >
-                                See Results!
+                                Click to See Results!
                             </Button>
 
                         <Modal show={this.state.showModal} onHide={this.closeModal}>
                         
                         <Modal.Header closeButton>
-                            <Modal.Title><h2 className="small-title">Your photo scored:</h2></Modal.Title>
+                            <Modal.Title className="small-title">Your photo scored:</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <table>
+                            <Table responsive striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th className="emo-name E3"> joy </th>
+                                        <th className="emo-name E0"> anger </th>
+                                        <th className="emo-name E2"> fear </th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr>
-                                        <td className="emo-list">
-                                            <h3 className="emo-name">
-                                                <img src="/images/E0.png" alt="emoticon" />
-                                                Anger: {this.state.anger}
-                                            </h3>
-                                        </td>
-                                        <td className="emo-list">
-                                            <h3 className="emo-name">
-                                                <img src="/images/E1.png" alt="emoticon" />
-                                                Disgust: {this.state.disgust}
-                                            </h3>
-                                        </td>
-                                        <td className="emo-list">
-                                            <h3 className="emo-name">
-                                                <img src="/images/E2.png" alt="emoticon" />
-                                                Fear: {this.state.fear}
-                                            </h3>
-                                        </td>
-                                        <td className="emo-list">
-                                            <h3 className="emo-name">
-                                                <img src="/images/E3.png" alt="emoticon" />
-                                                Joy: {this.state.joy}
-                                            </h3>
-                                        </td>
-                                        <td className="emo-list">
-                                            <h3 className="emo-name">
-                                                <img src="/images/E4.png" alt="emoticon" />
-                                                Sadness: {this.state.sadness}
-                                            </h3>
-                                        </td>
-                                        <td className="emo-list">
-                                            <h3 className="emo-name">
-                                                <img src="/images/E5.png" alt="emoticon" />
-                                                Surprise: {this.state.surprise}
-                                            </h3>
-                                        </td>
+                                        <td><img src="/images/E3.png" alt="emoticon-joy" /></td>
+                                        <td><img src="/images/E0.png" alt="emoticon-anger" /></td>
+                                        <td><img src="/images/E2.png" alt="emoticon-fear" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="emo-score E3"> {this.state.joy} </td>
+                                        <td className="emo-score E0"> {this.state.anger} </td>
+                                        <td className="emo-score E2"> {this.state.fear} </td>
+                                    </tr>               
+                                    <tr>
+                                        <td className="emo-name E4"> sadness </td>
+                                        <td className="emo-name E1"> disgust </td>
+                                        <td className="emo-name E5"> surprise </td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/E4.png" alt="emoticon-sad" /></td>
+                                        <td><img src="/images/E1.png" alt="emoticon-disgust" /></td>
+                                        <td><img src="/images/E5.png" alt="emoticon-surprise" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="emo-score E4"> {this.state.sadness} </td>
+                                        <td className="emo-score E1"> {this.state.disgust} </td>
+                                        <td className="emo-score E5"> {this.state.surprise} </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </Table>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button onClick={this.closeModal}>Close</Button>
                         </Modal.Footer>
                     </Modal>
                 </div>
-
-
-                        
                     </Row>
                 </Grid>
             </div>
