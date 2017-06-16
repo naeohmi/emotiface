@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-// import Cors from 'cors';
-import axios from 'axios';
+import { Bootstrap, Grid, Row, Col, Thumbnail, Button, Modal, Table } from 'react-bootstrap';
 
 class CurrentFace extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showModal: false,
             screenshot: null,
             imgUrl: null,
             emotion: undefined,
@@ -17,9 +17,19 @@ class CurrentFace extends Component {
             joy: undefined,
             sadness: undefined,
             surprise: undefined
+            // emotions: {
+            // "E0": "angry",
+            // "E1": "disgust",
+            // "E2": "fear",
+            // "E3": "joy",
+            // "E4": "sadness",
+            // "E5": "surprise"
+            // }
         }
         this.handleClick = this.handleClick.bind(this);
         this.checkEmotions = this.checkEmotions.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
     //grabs the image from the webcam after user clicks button
     handleClick(event) {
@@ -62,18 +72,13 @@ class CurrentFace extends Component {
                     }
                 });
             }
-
             convert64ToImg(screenshot);
-
             return Prom;
-
         })
-
         Prom.then(data => {
             // console.log('data: ', data);
             this.checkEmotions(data);
         })
-
     }
     //take the screenshot as jpeg in URL and send to Kairos API to check the emotion reading from AI
     checkEmotions(imgUrl) {
@@ -114,11 +119,11 @@ class CurrentFace extends Component {
                     .then(obj => {
                         // console.log('obj', obj)
                         // if (obj.frames[0].people[0].emotions === undefined) {
-                            if (obj.frames[0].people[0] === undefined) {
-                                console.log("face not found")
-                                alert(`Sorry, we can't find a face in that photo, please try again`)
-                                //TO DO --> refresh page AUTO
-                            }
+                        if (obj.frames === undefined) {
+                            console.log("face not found")
+                            alert(`Sorry, we can't find a face in that photo, please try again`)
+                            //TO DO --> refresh page AUTO
+                        }
                         let emotion = obj.frames[0].people[0].emotions
                         console.log(`Emotions found: ${emotion}`)
                         return emotion
@@ -137,66 +142,122 @@ class CurrentFace extends Component {
                         console.log(`emotions found: anger:${this.state.anger}, joy:${this.state.joy}`)
                         return emotion
                     })
-                // .then(emotion => {
-                // this.showEmotions()
-                // })
             })
             //to catch and log any errors
             .catch(err => {
                 console.log(err)
             })
     }
-    //once we have the emotions returned and have saved them into state, display them here!
-    showEmotions() {
-        console.log('showemotions awake')
-        if (this.state.emotion !== undefined) {
-            return (
-                <div className="emo-found">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td><h2 className="emo-title">You scored:</h2></td>
-                            </tr>
-
-                            <tr>
-                                <td className="emo-list"><h3> <img src="/images/E0.png" alt="emoticon" /> Anger: {this.state.anger} </h3></td>
-                                <td className="emo-list"><h3> <img src="/images/E3.png" alt="emoticon" /> Silly: {this.state.disgust} </h3></td>
-                                {/*<td className="emo-list"><h3> Fear: {this.state.fear} </h3></td>*/}
-                                <td className="emo-list"><h3> <img src="/images/E1.png" alt="emoticon" /> Joy: {this.state.joy} </h3></td>
-                                <td className="emo-list"><h3> <img src="/images/E2.png" alt="emoticon" /> Sadness: {this.state.sadness} </h3></td>
-                                <td className="emo-list"><h3> <img src="/images/E4.png" alt="emoticon" /> Surprise: {this.state.surprise} </h3></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            )
-        }
+    //bootstrap tool to close the modal window
+    closeModal() {
+        this.setState({
+            showModal: false
+        });
     }
-
-
+    //bootstrap tool to open the modal window
+    openModal() {
+        console.log('openModal awake')
+        this.setState({
+            showModal: true
+        });
+    }
 
     render() {
         return (
             <div className="container">
-                <div className="webcam">
-                    <Webcam
-                        audio={false}
-                        height={400}
-                        ref={node => this.webcam = node}
-                        screenshotFormat="image/jpeg"
-                        width={400}
-                    />
-                    <br />
-                    <button className="searchProduct" onClick={this.handleClick}>Save photo</button>
+                <Grid>
+                    <Row>
+                        <Col md={4}>
+                            <Thumbnail >
+                                <h3 className="small-title">Take a photo</h3>
+                                <div className="webcam" >
+                                    <Webcam
+                                        audio={false}
+                                        height={500}
+                                        ref={node => this.webcam = node}
+                                        screenshotFormat="image/jpeg"
+                                        width={500}
+                                        className="webcam-cam"
+                                    />
+                                </div>
+                                <br />
+                                <p>
+                                    {/*<button className="searchProduct" onClick={this.handleClick}>Save photo</button>*/}
+                                    <Button bsStyle="primary" onClick={this.handleClick}>Save photo</Button>
+                                </p>
+                            </Thumbnail>
+                        </Col>
 
-                    <div className="sceenshot">
-                        {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
+                        <Col md={4}>
+                            <Thumbnail>
+                                <div className="sceenshot">
+                                    <h3 className="small-title">Here's your photo:</h3>
+                                    {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
 
-                    </div>
+                                </div>
+
+                            </Thumbnail>
+                        </Col>
+                        <div className="emos">
+
+                            <Button
+                                bsStyle="primary"
+                                bsSize="large"
+                                onClick={this.openModal}
+                                >
+                                Click to See Results!
+                            </Button>
+
+                        <Modal show={this.state.showModal} onHide={this.closeModal}>
+                        
+                        <Modal.Header closeButton>
+                            <Modal.Title className="small-title">Your photo scored:</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Table responsive striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th className="emo-name E3"> joy </th>
+                                        <th className="emo-name E0"> anger </th>
+                                        <th className="emo-name E2"> fear </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/images/E3.png" alt="emoticon-joy" /></td>
+                                        <td><img src="/images/E0.png" alt="emoticon-anger" /></td>
+                                        <td><img src="/images/E2.png" alt="emoticon-fear" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="emo-score E3"> {this.state.joy} </td>
+                                        <td className="emo-score E0"> {this.state.anger} </td>
+                                        <td className="emo-score E2"> {this.state.fear} </td>
+                                    </tr>               
+                                    <tr>
+                                        <td className="emo-name E4"> sadness </td>
+                                        <td className="emo-name E1"> disgust </td>
+                                        <td className="emo-name E5"> surprise </td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/E4.png" alt="emoticon-sad" /></td>
+                                        <td><img src="/images/E1.png" alt="emoticon-disgust" /></td>
+                                        <td><img src="/images/E5.png" alt="emoticon-surprise" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="emo-score E4"> {this.state.sadness} </td>
+                                        <td className="emo-score E1"> {this.state.disgust} </td>
+                                        <td className="emo-score E5"> {this.state.surprise} </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.closeModal}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
-                <div className="emos">
-                    {this.showEmotions()}
-                </div>
+                    </Row>
+                </Grid>
             </div>
         );
     }

@@ -16,7 +16,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-
+import { Bootstrap, Navbar } from 'react-bootstrap';
 import Round from './components/game/Round';
 
 class App extends Component {
