@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-import { Bootstrap, Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
+import { Bootstrap, Grid, Row, Col, Thumbnail, Button, Modal } from 'react-bootstrap';
 
 class CurrentFace extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showModal: false,
             screenshot: null,
             imgUrl: null,
             emotion: undefined,
@@ -17,16 +18,18 @@ class CurrentFace extends Component {
             sadness: undefined,
             surprise: undefined
             // emotions: {
-                // "E0": "angry",
-                // "E1": "disgust",
-                // "E2": "fear",
-                // "E3": "joy",
-                // "E4": "sadness",
-                // "E5": "surprise"
+            // "E0": "angry",
+            // "E1": "disgust",
+            // "E2": "fear",
+            // "E3": "joy",
+            // "E4": "sadness",
+            // "E5": "surprise"
             // }
         }
         this.handleClick = this.handleClick.bind(this);
         this.checkEmotions = this.checkEmotions.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
     //grabs the image from the webcam after user clicks button
     handleClick(event) {
@@ -69,13 +72,9 @@ class CurrentFace extends Component {
                     }
                 });
             }
-
             convert64ToImg(screenshot);
-
             return Prom;
-
         })
-
         Prom.then(data => {
             // console.log('data: ', data);
             this.checkEmotions(data);
@@ -143,43 +142,25 @@ class CurrentFace extends Component {
                         console.log(`emotions found: anger:${this.state.anger}, joy:${this.state.joy}`)
                         return emotion
                     })
-                // .then(emotion => {
-                // this.showEmotions()
-                // })
             })
             //to catch and log any errors
             .catch(err => {
                 console.log(err)
             })
     }
-    //once we have the emotions returned and have saved them into state, display them here!
-    showEmotions() {
-        console.log('showemotions awake')
-        if (this.state.emotion !== undefined) {
-            return (
-                <div className="emo-found">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td><h2 className="small-title">You scored:</h2></td>
-                            </tr>
-
-                            <tr>
-                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E0.png" alt="emoticon" /> Anger: {this.state.anger} </h3></td>
-                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E1.png" alt="emoticon" /> Disgust: {this.state.disgust} </h3></td>
-                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E2.png" alt="emoticon" /> Fear: {this.state.fear} </h3></td>
-                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E3.png" alt="emoticon" /> Joy: {this.state.joy} </h3></td>
-                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E4.png" alt="emoticon" /> Sadness: {this.state.sadness} </h3></td>
-                                <td className="emo-list"><h3 className="emo-name"> <img src="/images/E5.png" alt="emoticon" /> Surprise: {this.state.surprise} </h3></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            )
-        }
+    //bootstrap tool to close the modal window
+    closeModal() {
+        this.setState({
+            showModal: false
+        });
     }
-
-
+    //bootstrap tool to open the modal window
+    openModal() {
+        console.log('openModal awake')
+        this.setState({
+            showModal: true
+        });
+    }
 
     render() {
         return (
@@ -209,20 +190,86 @@ class CurrentFace extends Component {
 
                         <Col md={4}>
                             <Thumbnail>
-                                <h3 className="small-title">Here's your photo!</h3>
                                 <div className="sceenshot">
+                                    <h3 className="small-title">Here's your photo:</h3>
                                     {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
 
                                 </div>
                                 <p>
-                                    <Button bsStyle="primary">Save!</Button>
+                                    {/*<Button bsStyle="primary">See Results!</Button>*/}
                                 </p>
                             </Thumbnail>
                         </Col>
 
+
+
                         <div className="emos">
-                            {this.showEmotions()}
-                        </div>
+
+                            <Button
+                                bsStyle="primary"
+                                bsSize="large"
+                                onClick={this.openModal}
+                                >
+                                See Results!
+                            </Button>
+
+                        <Modal show={this.state.showModal} onHide={this.closeModal}>
+                        
+                        <Modal.Header closeButton>
+                            <Modal.Title><h2 className="small-title">Your photo scored:</h2></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td className="emo-list">
+                                            <h3 className="emo-name">
+                                                <img src="/images/E0.png" alt="emoticon" />
+                                                Anger: {this.state.anger}
+                                            </h3>
+                                        </td>
+                                        <td className="emo-list">
+                                            <h3 className="emo-name">
+                                                <img src="/images/E1.png" alt="emoticon" />
+                                                Disgust: {this.state.disgust}
+                                            </h3>
+                                        </td>
+                                        <td className="emo-list">
+                                            <h3 className="emo-name">
+                                                <img src="/images/E2.png" alt="emoticon" />
+                                                Fear: {this.state.fear}
+                                            </h3>
+                                        </td>
+                                        <td className="emo-list">
+                                            <h3 className="emo-name">
+                                                <img src="/images/E3.png" alt="emoticon" />
+                                                Joy: {this.state.joy}
+                                            </h3>
+                                        </td>
+                                        <td className="emo-list">
+                                            <h3 className="emo-name">
+                                                <img src="/images/E4.png" alt="emoticon" />
+                                                Sadness: {this.state.sadness}
+                                            </h3>
+                                        </td>
+                                        <td className="emo-list">
+                                            <h3 className="emo-name">
+                                                <img src="/images/E5.png" alt="emoticon" />
+                                                Surprise: {this.state.surprise}
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.closeModal}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
+
+
+                        
                     </Row>
                 </Grid>
             </div>
