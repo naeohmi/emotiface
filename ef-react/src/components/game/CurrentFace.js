@@ -119,10 +119,12 @@ class CurrentFace extends Component {
                     .then(obj => {
                         // console.log('obj', obj)
                         // if (obj.frames[0].people[0].emotions === undefined) {
-                        if (obj.frames === undefined) {
+                        if (obj.frames === undefined || obj.frames[0].people[0] === undefined || obj.frames[0].people[0].emotions === undefined ) {
                             console.log("face not found")
                             alert(`Sorry, we can't find a face in that photo, please try again`)
-                            //TO DO --> refresh page AUTO
+                            //refresh page AUTO
+                            //could also use force update :)
+                            window.location.reload()
                         }
                         let emotion = obj.frames[0].people[0].emotions
                         console.log(`Emotions found: ${emotion}`)
@@ -229,9 +231,9 @@ class CurrentFace extends Component {
                                         <td><img src="/images/E2.png" alt="emoticon-fear" /></td>
                                     </tr>
                                     <tr>
-                                        <td className="emo-score E3"> {this.state.joy} </td>
-                                        <td className="emo-score E0"> {this.state.anger} </td>
-                                        <td className="emo-score E2"> {this.state.fear} </td>
+                                        <td className="emo-score E3"> +{this.state.joy} </td>
+                                        <td className="emo-score E0"> +{this.state.anger} </td>
+                                        <td className="emo-score E2"> +{this.state.fear} </td>
                                     </tr>               
                                     <tr>
                                         <td className="emo-name E4"> sadness </td>
@@ -244,9 +246,9 @@ class CurrentFace extends Component {
                                         <td><img src="/images/E5.png" alt="emoticon-surprise" /></td>
                                     </tr>
                                     <tr>
-                                        <td className="emo-score E4"> {this.state.sadness} </td>
-                                        <td className="emo-score E1"> {this.state.disgust} </td>
-                                        <td className="emo-score E5"> {this.state.surprise} </td>
+                                        <td className="emo-score E4"> +{this.state.sadness} </td>
+                                        <td className="emo-score E1"> +{this.state.disgust} </td>
+                                        <td className="emo-score E5"> +{this.state.surprise} </td>
                                     </tr>
                                 </tbody>
                             </Table>

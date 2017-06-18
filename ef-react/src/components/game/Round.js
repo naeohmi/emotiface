@@ -53,8 +53,6 @@ class Round extends Component {
             </div>
         );
     }
-
-
     e4() {
         return (
             <div className="round E4">
