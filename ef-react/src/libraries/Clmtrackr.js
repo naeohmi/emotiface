@@ -912,10 +912,8 @@ var clm = {
 					jacobian[(i*2)+1][j+4] = j1;
 				}
 			}
-
 			return jacobian;
 		}
-
 		// calculate positions from parameters
 		var calculatePositions = function(parameters, useTransforms) {
 			var x, y, a, b;
@@ -936,16 +934,13 @@ var clm = {
 				}
 				positions[i] = [x,y];
 			}
-
 			return positions;
 		}
-
 		// detect position of face on canvas/video element
 		var detectPosition = function(el, callback) {
 			if (callback) {
 				jf.faceDetected = function (e, callback) {
 					candidate = e.data.comp;
-
 					if (candidate) {
 						callback(candidate);
 					} else {
@@ -963,7 +958,6 @@ var clm = {
 				}
 			}
 		}
-
 		// part one of meanshift calculation
 		var gpopt = function(responseWidth, currentPositionsj, updatePosition, vecProbs, responses, opj0, opj1, j, variance, scaling) {
 			var pos_idx = 0;
@@ -982,15 +976,12 @@ var clm = {
 					pos_idx++;
 				}
 			}
-
 			return vpsum;
 		}
-
 		// part two of meanshift calculation
 		var gpopt2 = function(responseWidth, vecpos, updatePosition, vecProbs, vpsum, opj0, opj1, scaling) {
 			//for debugging
 			//var vecmatrix = [];
-
 			var pos_idx = 0;
 			var vecsum = 0;
 			vecpos[0] = 0;
@@ -1000,10 +991,8 @@ var clm = {
 				for (var l = 0;l < responseWidth;l++) {
 					updatePosition[0] = opj0+(l*scaling);
 					vecsum = vecProbs[pos_idx]/vpsum;
-
 					//for debugging
 					//vecmatrix[k*responseWidth + l] = vecsum;
-
 					vecpos[0] += vecsum*updatePosition[0];
 					vecpos[1] += vecsum*updatePosition[1];
 					pos_idx++;
@@ -1012,7 +1001,6 @@ var clm = {
 			// for debugging
 			//return vecmatrix;
 		}
-
 		// calculate score of current fit
 		var checkTracking = function() {
 			scoringContext.drawImage(sketchCanvas, Math.round(msxmin+(msmodelwidth/4.5)), Math.round(msymin-(msmodelheight/12)), Math.round(msmodelwidth-(msmodelwidth*2/4.5)), Math.round(msmodelheight-(msmodelheight/12)), 0, 0, 20, 22);
@@ -1027,7 +1015,6 @@ var clm = {
 				scoringData[i] = Math.log(scoringData[i]+1);
 				if (scoringData[i] > scmax) scmax = scoringData[i];
 			}
-
 			if (scmax > 0) {
 				// normalize & multiply by svmFilter
 				var mean = 0;

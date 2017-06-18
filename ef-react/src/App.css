@@ -142,14 +142,14 @@ h1 {
 
 /*---------FOOTER---------*/
 
-.footer-wrapper {
-  /*background-color: rgba(222,222,222,1);*/
+/*.footer-wrapper {
+  background-color: rgba(222,222,222,1);
   position: fixed;
-  /*text-align: right;*/
+  text-align: right;
   bottom: 0px;
-  /*height: 3vh;*/
+  height: 3vh;
   width: 100%;
-}
+}*/
 
 .footer-h2 {
   /*color: black;*/
@@ -211,9 +211,6 @@ h1 {
 }
 
 .start-btn-li {
-  
-  
-  
 }
 
 .start-btn-li a {
@@ -294,22 +291,22 @@ h1 {
   color: rgba(255,117,0,1);
 }
 /*---------CURRENT FACE---------*/
-.emo-list img {
-  width: 150px;
-  height: 150px;
+td img {
+  width: 90px;
+  height: 90px;
 }
 
 .emo-name {
-  font-size: 2.5em;
+  font-size: 1.5em;
   /*color: black;*/
   font-family: 'Chelsea Market', cursive;
 
 }
 .emo-score {
   font-family: 'Chelsea Market', cursive;
-  font-size: 3em;
+  font-size: 2em;
   /*color: black;*/
-	/*text-shadow: 1px 2px 1px #00FF0E;*/
+	text-shadow: 1px 1px 2px black;
   text-align: center;
   align-content: center;
 }
@@ -339,6 +336,17 @@ th {
 .webcam-cam {
   /*border: 1px solid #ddd;*/
   /*padding: 0px;*/
+}
+@media only screen and (min-width: 999px) {
+
+  .col-md-4 {
+    width: unset;
+
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /*---------MOBILE---------*/
