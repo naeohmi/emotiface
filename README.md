@@ -16,7 +16,8 @@
 5. [Wireframes](#wireframes)
 6. [Tech Stack](#techstack)
 7. [API Research](#apiresearch)
-7. [See Project](#seeproject)
+8. [Screenshots from Game](#screenshots)
+9. [See Project](#seeproject)
 
 <a name="appdescription">
 
@@ -135,6 +136,36 @@ Target User Demographic = young people with Autism or Asperger's who want to pra
 
 </a>
 
+<a name="screenshots">
+
+## Screenshots from Emotiface:
+
+### Play Game Page:
+
+![screenshots](/images/play-page.png)
+
+(current version of the display emotions and score modal)
+![screenshots](/images/score-modal.png)
+
+(older version of the display score screen)
+![screenshots](/images/testing-example.png)
+
+### About Page:
+
+![screenshots](/images/about-page.png)
+
+![screenshots](/images/about.png)
+
+### Home Page:
+
+![screenshots](/images/home-page.png)
+
+### End Page:
+
+![screenshots](/images/stop-page.png)
+
+</a>
+
 <a name="seeproject">
 
 ## See the project here:
@@ -150,7 +181,7 @@ Target User Demographic = young people with Autism or Asperger's who want to pra
 
 Thanks :) 
 
-![app-logo](/images/logo.png)
+![app-logo](/images/logo-small.png)
 
 </a>
 
