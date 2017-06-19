@@ -222,6 +222,13 @@ h1 {
   color: rgba(255,117,0,1);
   transition: 2s;
 }
+.btn-toolbar {
+  display: inline-block;
+  align-content: center;
+  text-align: center;
+}
+
+
 /*---------CURRENT FACE---------*/
 td img {
   width: 90px;
