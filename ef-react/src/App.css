@@ -337,6 +337,11 @@ th {
   /*border: 1px solid #ddd;*/
   /*padding: 0px;*/
 }
+
+.end-landing-wrapper {
+  align-content: center;
+  text-align: center;
+}
 @media only screen and (min-width: 999px) {
 
   .col-md-4 {

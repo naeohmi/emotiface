@@ -7,7 +7,7 @@ class FourOhFour extends Component {
             <div className="four-oh-four-wrapper">
                 <h1>Sorry we can't find that page right now!</h1>
 
-                <iframe src="https://giphy.com/embed/n5ZJhC4NxnDlm" width="480" height="467" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+                <iframe title="404" src="https://giphy.com/embed/n5ZJhC4NxnDlm" width="480" height="467" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
             </div>
         );
     }

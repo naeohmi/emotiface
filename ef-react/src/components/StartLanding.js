@@ -13,7 +13,7 @@ class StartLanding extends Component {
     render() {
         return (
             <div className="start-landing-wrapper">
-                {/*<Jumbotron>*/}
+                
                 <h1 className="title">welcome to:</h1>
                 <a className="main-logo"href="/"><img src="/images/logo.png" alt="logo" /></a>
                 <div className="start-info">
@@ -28,7 +28,7 @@ class StartLanding extends Component {
                         </ul>
                     </div>
                 </div>
-                {/*</Jumbotron>*/}
+                
                 <Footer />
             </div>
         );
