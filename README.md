@@ -10,12 +10,12 @@
 ## Table of Contents:
 
 1. [App/Game description](#appdescription)
-2. [App Flow Chart] (#appflow)
-3. [App Flow/Pseudo Code] (#pseudocode)
+2. [App Flow Chart](#appflow)
+3. [App Flow/Pseudo Code](#pseudocode)
 4. [User Stories](#userstories)
 5. [Wireframes](#wireframes)
 6. [Tech Stack](#techstack)
-7. [API Research] (#apiresearch)
+7. [API Research](#apiresearch)
 7. [See Project](#seeproject)
 
 <a name="appdescription">
