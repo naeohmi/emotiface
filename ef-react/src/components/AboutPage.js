@@ -38,7 +38,7 @@ class AboutPage extends Component {
                     </Thumbnail>
                 </Col>
                 <Col xs={6} md={4}>
-                    <Thumbnail className="thumb" src="/images/logo-big.png" alt="logo">
+                    <Thumbnail className="thumb" src="images/logo-big.png" alt="logo">
                         <h3>About the Game:</h3>
                         <p>
                             <Button bsStyle="primary" onClick={this.open}>click to learn more</Button>&nbsp;
