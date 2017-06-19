@@ -4,8 +4,6 @@ import config from '../config'
 import aws from 'aws-sdk';
 import Affdex from 'affdex-licode';
 
-// import CurrentEmotion from './CurrentEmotion';
-
 class EmotionToDo extends Component {
 
     constructor(props) {
@@ -176,7 +174,7 @@ class EmotionToDo extends Component {
         var contxt = $('#face_video_canvas')[0].getContext('2d');
         var hRatio = contxt.canvas.width / img.width;
         var vRatio = contxt.canvas.height / img.height;
-        var ratio = Math.min(hRatio, vRatio);
+        // var ratio = Math.min(hRatio, vRatio);
 
         contxt.strokeStyle = "#FFFFFF";
         for (var id in featurePoints) {

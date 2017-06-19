@@ -4,6 +4,7 @@ class Round extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentId: undefined,
             emotions: {
                 "E0": "angry",
                 "E1": "disgust",
@@ -13,15 +14,50 @@ class Round extends Component {
                 "E5": "surprise"
             }
         }
+        this.e0 = this.e0.bind(this);
+        this.e1 = this.e1.bind(this);
+        this.e2 = this.e2.bind(this);
+        this.e3 = this.e3.bind(this);
+        this.e4 = this.e4.bind(this);
     }
     //TODO:
     //redirect to ID plus one
     //component for redirect
     //componentDidMount
-    componentWillMount() {
-        console.log(this.props.match.params.id)
+    componentDidMount() {
+        console.log('component mount1', this.state.currentId);
+        let currentId = this.props.match.params.id;
+        console.log('component mount 2', currentId)
+        // this.emoToDo(currentId)
+    // }
+    // emoToDo(currentId) {
+        console.log('EMOTODO', currentId);
+        if (currentId == 1) {
+
+        console.log('e0 woke')
+        return (
+            <div className="round E0">
+                <h1 className="emo-face">Make a:<span className="emo-name"> {this.state.emotions.E0} </span> face</h1>
+                    <img src="/images/E0.png" alt="emoticon" />
+            </div>
+        );
+
+
+
+        } else if (currentId === 0) {
+            this.e1()
+            console.log('e1')
+        } else if (currentId === 2) {
+            this.e2()
+            console.log('e2')
+        } else if (currentId === 3) {
+            this.e3()
+            console.log('e3')
+        }
     }
+  
     e0() {
+        console.log('e0 woke')
         return (
             <div className="round E0">
                 <h1 className="emo-face">Make a:<span className="emo-name"> {this.state.emotions.E0} </span> face</h1>
@@ -65,7 +101,9 @@ class Round extends Component {
     render() {
         return (
             <div className="round">
-
+                <h3 className="to-do">Face to do!</h3>
+                    {this.componentDidMount}
+                
             </div>
         );
     }

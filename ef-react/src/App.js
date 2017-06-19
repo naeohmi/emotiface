@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-// import axios from 'axios';
-// import ajax from 'ajax';
-// import Clmtrackr from './libraries/Clmtrackr';
-// import clmtrackr from 'clmtrackr';
 import StartLanding from './components/StartLanding';
 import CurrentFace from './components/game/CurrentFace';
-import EmotionToDo from './components/game/EmotionToDo';
 import EndLanding from './components/EndLanding';
 import AboutPage from './components/AboutPage';
 import FourOhFour from './components/FourOhFour';
@@ -16,7 +11,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import { Bootstrap, Navbar } from 'react-bootstrap';
 import Round from './components/game/Round';
 
 class App extends Component {
@@ -52,10 +46,9 @@ class App extends Component {
               componentWillMount={this.componentWillMount}
               />)} />
             <Route path="/about" exact component={() => (<AboutPage />)} />
-            {/*<Route path="/play/setup" exact component={() => (<EmotionToDo />)} />*/}
             <Route path="/play/action" exact component={() => (<CurrentFace />)} />
-
             <Route path="/play/:id" component={Round} />
+            {/*<Route path="/play/:id" exact component={() => (<Round />)} />*/}
 
             <Route path="/end" exact component={() => (<EndLanding />)} />
             <Route path="/*" exact component={() => (<FourOhFour />)} />
