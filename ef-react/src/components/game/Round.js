@@ -32,7 +32,7 @@ class Round extends Component {
     // }
     // emoToDo(currentId) {
         console.log('EMOTODO', currentId);
-        if (currentId == 1) {
+        if (currentId === 1) {
 
         console.log('e0 woke')
         return (

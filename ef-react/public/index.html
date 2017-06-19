@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#000000">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
@@ -23,7 +24,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>emotiface</title>
-  <!--<script type="text/javascript">
+  <script type="text/javascript">
     // Single Page Apps for GitHub Pages
     // https://github.com/rafrex/spa-github-pages
     // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
@@ -35,24 +36,24 @@
     // When the single page app is loaded further down in this file,
     // the correct url will be waiting in the browser's history for
     // the single page app to route accordingly.
-  //   (function (l) {
-  //     if (l.search) {
-  //       var q = {};
-  //       l.search.slice(1).split('&').forEach(function (v) {
-  //         var a = v.split('=');
-  //         q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-  //       });
-  //       if (q.p !== undefined) {
-  //         window.history.replaceState(null, null,
-  //           l.pathname.slice(0, -1) + (q.p || '') +
-  //           (q.q ? ('?' + q.q) : '') +
-  //           l.hash
-  //         );
-  //       }
-  //     }
-  //   }(window.location))
-  // </script>
-  -->
+    (function (l) {
+      if (l.search) {
+        var q = {};
+        l.search.slice(1).split('&').forEach(function (v) {
+          var a = v.split('=');
+          q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+        });
+        if (q.p !== undefined) {
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + (q.p || '') +
+            (q.q ? ('?' + q.q) : '') +
+            l.hash
+          );
+        }
+      }
+    }(window.location))
+  </script>
+  
 </head>
 
 <body>

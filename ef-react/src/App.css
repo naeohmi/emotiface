@@ -274,22 +274,31 @@ h1 {
 
 .E0 {
   color: rgba(255,0,34,1);
+  transition: 2s;
 }
+
 .E1 {
   color: rgba(0,132,255,1);
+  transition: 2s;
 }
 .E2 {
   color: rgba(0,246,255,1);
+  transition: 2s;
 }
 .E3 {
   color: rgba(187,53,242,1);
+  transition: 2s;
 }
 .E4 {
   color: rgba(0,255,14,1);
+  transition: 2s;
 }
 .E5 {
   color: rgba(255,117,0,1);
+  transition: 2s;
 }
+
+
 /*---------CURRENT FACE---------*/
 td img {
   width: 90px;
@@ -337,6 +346,11 @@ th {
   /*border: 1px solid #ddd;*/
   /*padding: 0px;*/
 }
+
+.end-landing-wrapper {
+  align-content: center;
+  text-align: center;
+}
 @media only screen and (min-width: 999px) {
 
   .col-md-4 {
@@ -347,6 +361,18 @@ th {
     display: flex;
     flex-direction: column;
   }
+}
+
+.emo-title {
+  display: inline-block;
+  width: 100px;
+  transition: 2s;
+  padding: 10px;
+}
+
+
+.emo-title:hover {
+  width: 120px;
 }
 
 /*---------MOBILE---------*/

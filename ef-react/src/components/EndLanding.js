@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
+import { Jumbotron } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 class EndLanding extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
 
     render() {
         return (
             <div className="end-landing-wrapper">
-                <h1>EndLanding</h1>
+                <Jumbotron>
+                <h1>Finished playing?</h1>
+            <iframe title="stop-page" src="https://giphy.com/embed/vDurI6FYH7qi4" width="480" height="270" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+            <br />
+            <br />
+                   <div className="start-btn-div">
+                        <ul className="start-btn-ul">
+                            <li className="start-btn-li">
+                                <NavLink to="/play/action">
+                                    <p>click to play again!</p>
+                            </NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    </Jumbotron>
             </div>
         );
     }
