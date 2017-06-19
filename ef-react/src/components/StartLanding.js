@@ -13,9 +13,8 @@ class StartLanding extends Component {
     render() {
         return (
             <div className="start-landing-wrapper">
-
                 <h1 className="title">welcome to:</h1>
-                <div className=" animated jello"><a className="main-logo" href="/"><img src="/images/logo.png" alt="logo" /></a></div>
+                <div className=" animated jello"><a className="main-logo" href="/"><img src="images/logo.png" alt="logo" /></a></div>
                 <div className="start-info">
                     {/*<div className=" animated jello emo-title"><img src="images/E0.png" alt="emoticon" /></div>*/}
                     {/*<div className=" animated flip emo-title"><img src="images/E1.png" alt="emoticon" /></div>*/}
