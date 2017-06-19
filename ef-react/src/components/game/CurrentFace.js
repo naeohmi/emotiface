@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-import { Grid, Row, Col, Thumbnail, Button, Modal, Table } from 'react-bootstrap';
+import { Grid, Row, Col, Thumbnail, Button, Modal, Table, OverlayTrigger, Popover } from 'react-bootstrap';
 
 class CurrentFace extends Component {
     constructor(props) {
@@ -119,7 +119,7 @@ class CurrentFace extends Component {
                     .then(obj => {
                         // console.log('obj', obj)
                         // if (obj.frames[0].people[0].emotions === undefined) {
-                        if (obj.frames === undefined || obj.frames[0].people[0] === undefined || obj.frames[0].people[0].emotions === undefined ) {
+                        if (obj.frames === undefined || obj.frames[0].people[0] === undefined || obj.frames[0].people[0].emotions === undefined) {
                             console.log("face not found")
                             alert(`Sorry, we can't find a face in that photo, please try again`)
                             //refresh page AUTO
@@ -165,6 +165,23 @@ class CurrentFace extends Component {
     }
 
     render() {
+        const popover = (
+            <Popover id="popover" title="Photo Instructions:">
+                Facial Recognition can be fussy sometimes!
+                <br />
+                When taking a photo please ensure:
+                <br />
+                1. Your whole face is in the screen
+                <br />
+                2. There are no bright lights in the photo to distract the software
+                <br />
+                3. You are facing forward, directly toward the camera
+                <br />
+                4. You are not wearing a hat or large distracting glasses
+                <br />
+                5. Thanks :D
+            </Popover>
+        );
         return (
             <div className="container">
                 <Grid>
@@ -172,95 +189,96 @@ class CurrentFace extends Component {
                         <Col md={4}>
                             <Thumbnail >
                                 <h3 className="small-title">Take a photo</h3>
-                                <div className="webcam" >
-                                    <Webcam
-                                        audio={false}
-                                        height={500}
-                                        ref={node => this.webcam = node}
-                                        screenshotFormat="image/jpeg"
-                                        width={500}
-                                        className="webcam-cam"
-                                    />
-                                </div>
-                                <br />
-                                <p>
-                                    {/*<button className="searchProduct" onClick={this.handleClick}>Save photo</button>*/}
-                                    <Button bsStyle="primary" onClick={this.handleClick}>Save photo</Button>
-                                </p>
+                                    {/*<OverlayTrigger overlay={popover}>photo</OverlayTrigger>*/}
+                                    {/*</h3>*/}
+                            <div className="webcam" >
+                                <Webcam
+                                    audio={false}
+                                    height={500}
+                                    ref={node => this.webcam = node}
+                                    screenshotFormat="image/jpeg"
+                                    width={500}
+                                    className="webcam-cam"
+                                />
+                            </div>
+                            <br />
+                            <p>
+                                {/*<button className="searchProduct" onClick={this.handleClick}>Save photo</button>*/}
+                                <Button bsStyle="primary" onClick={this.handleClick}>Save photo</Button>
+                            </p>
                             </Thumbnail>
                         </Col>
 
-                        <Col md={4}>
-                            <Thumbnail>
-                                <div className="sceenshot">
-                                    <h3 className="small-title">Here's your photo:</h3>
-                                    {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
+                    <Col md={4}>
+                        <Thumbnail>
+                            <div className="sceenshot">
+                                <h3 className="small-title">Here's your photo:</h3>
+                                {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
+                            </div>
 
-                                </div>
+                        </Thumbnail>
+                    </Col>
+                    <div className="emos">
 
-                            </Thumbnail>
-                        </Col>
-                        <div className="emos">
-
-                            <Button
-                                bsStyle="primary"
-                                bsSize="large"
-                                onClick={this.openModal}
-                                >
-                                Click to See Results!
+                        <Button
+                            bsStyle="primary"
+                            bsSize="large"
+                            onClick={this.openModal}
+                        >
+                            Click to See Results!
                             </Button>
 
                         <Modal show={this.state.showModal} onHide={this.closeModal}>
-                        
-                        <Modal.Header closeButton>
-                            <Modal.Title className="small-title">Your photo scored:</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Table responsive striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th className="emo-name E3"> joy </th>
-                                        <th className="emo-name E0"> anger </th>
-                                        <th className="emo-name E2"> fear </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><img src="/images/E3.png" alt="emoticon-joy" /></td>
-                                        <td><img src="/images/E0.png" alt="emoticon-anger" /></td>
-                                        <td><img src="/images/E2.png" alt="emoticon-fear" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="emo-score E3"> +{this.state.joy} </td>
-                                        <td className="emo-score E0"> +{this.state.anger} </td>
-                                        <td className="emo-score E2"> +{this.state.fear} </td>
-                                    </tr>               
-                                    <tr>
-                                        <td className="emo-name E4"> sadness </td>
-                                        <td className="emo-name E1"> disgust </td>
-                                        <td className="emo-name E5"> surprise </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="/images/E4.png" alt="emoticon-sad" /></td>
-                                        <td><img src="/images/E1.png" alt="emoticon-disgust" /></td>
-                                        <td><img src="/images/E5.png" alt="emoticon-surprise" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="emo-score E4"> +{this.state.sadness} </td>
-                                        <td className="emo-score E1"> +{this.state.disgust} </td>
-                                        <td className="emo-score E5"> +{this.state.surprise} </td>
-                                    </tr>
-                                </tbody>
-                            </Table>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.closeModal}>Close</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
+
+                            <Modal.Header closeButton>
+                                <Modal.Title className="small-title">Your photo scored:</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Table responsive striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                            <th className="emo-name E3"> joy </th>
+                                            <th className="emo-name E0"> anger </th>
+                                            <th className="emo-name E2"> fear </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="images/E3.png" alt="emoticon-joy" /></td>
+                                            <td><img src="images/E0.png" alt="emoticon-anger" /></td>
+                                            <td><img src="images/E2.png" alt="emoticon-fear" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="emo-score E3"> +{this.state.joy} </td>
+                                            <td className="emo-score E0"> +{this.state.anger} </td>
+                                            <td className="emo-score E2"> +{this.state.fear} </td>
+                                        </tr>
+                                        <tr>
+                                            <td className="emo-name E4"> sadness </td>
+                                            <td className="emo-name E1"> disgust </td>
+                                            <td className="emo-name E5"> surprise </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="images/E4.png" alt="emoticon-sad" /></td>
+                                            <td><img src="images/E1.png" alt="emoticon-disgust" /></td>
+                                            <td><img src="images/E5.png" alt="emoticon-surprise" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="emo-score E4"> +{this.state.sadness} </td>
+                                            <td className="emo-score E1"> +{this.state.disgust} </td>
+                                            <td className="emo-score E5"> +{this.state.surprise} </td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button onClick={this.closeModal}>Close</Button>
+                            </Modal.Footer>
+                        </Modal>
+                    </div>
                     </Row>
                 </Grid>
-            </div>
+            </div >
         );
     }
 };

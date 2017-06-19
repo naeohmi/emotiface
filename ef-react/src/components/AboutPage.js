@@ -20,7 +20,7 @@ class AboutPage extends Component {
     render() {
 
         const popover = (
-            <Popover id="modal-popover" title="github">
+            <Popover id="modal-popover" title="Github">
                 www.github.com/naeohmi/emotiface
       </Popover>
         );

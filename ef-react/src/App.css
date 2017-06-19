@@ -1,18 +1,3 @@
-/*COLORS:
-red: #FF0022 rgba(255,0,34,1);
-orange: #FF7500 rgba(255,117,0,1);
-yellow: #fff300 rgba(255,243,0,1);
-green: #00FF0E rgba(0,255,14,1);
-blue-light: #00faff rgba(0,250,255,1);
-blue-mid: #0084FF rgba(0,132,255,1);
-blue-darK: #0500FF rgba(5,0,255,1);
-teal: rgba(0,246,255,1);
-purple:#BB35F2 rgba(187,53,242,1);
-pink: #FE2EE1 rgba(254,46,225,1);
-light-grey: #EEEEEE rgba(238,238,238,1);
-dark-grey: #DEDEDE rgba(222,222,222,1);
-*/
-
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -61,7 +46,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 @import url('https://fonts.googleapis.com/css?family=Basic|Chelsea+Market|Fredericka+the+Great');
 
 /*---------FOR EVERYTHING---------*/
@@ -70,46 +54,33 @@ body {
   /*font-family: 'Chelsea Market', cursive;*/
   font-family: 'Basic', sans-serif; 
   /*font-family: 'Fredericka the Great', cursive;*/
-  /*margin: 0 auto;*/
 }
-
-
 h1 {
   font-family: 'Chelsea Market', cursive;
 }
-
 /*---------NAVIGATION---------*/
-
 .navigation-wrapper {
   height: 100px;
   background-color: rgba(222,222,222,1);
 }
-
 .logo-small img {
   position: absolute;
-  /*display: inline-block;*/
   width: 90px;
   height: 90px;
   float: left;
 }
-
 .navigation-nav {
   display: inline-block;
   width: 100%;
 }
-
 .nav-ul {
   list-style: none;
   float: right;
 }
-
-
 .nav-li {
   display: inline-block;
   padding: 20px 30px;
 }
-
-
 .nav-li a {
   font-size: 20px;
   text-decoration: none;
@@ -117,39 +88,24 @@ h1 {
   /*color: rgba(187,53,242,0.8);*/
   transition: 1s;
 }
-
 .nav-li1 a {
   color: rgba(187,53,242,1);
 }
-
 .nav-li2 a {
   color: rgba(0,132,255,1);
 }
-
 .nav-li3 a {
   color: rgba(0,255,14,1);
 }
-
 .nav-li4 a {
   color: rgba(255,0,34,1);
 }
-
 .nav-li a:hover {
   color: rgba(255,117,0,1);
   text-decoration: underline;
 }
 
-
 /*---------FOOTER---------*/
-
-/*.footer-wrapper {
-  background-color: rgba(222,222,222,1);
-  position: fixed;
-  text-align: right;
-  bottom: 0px;
-  height: 3vh;
-  width: 100%;
-}*/
 
 .footer-h2 {
   /*color: black;*/
@@ -157,7 +113,6 @@ h1 {
   font-family: 'Chelsea Market', cursive;
 
 }
-
 .footer-h2 a {
   text-decoration: none;
   color: rgba(254,46,225,1);
@@ -165,17 +120,12 @@ h1 {
 .footer-h2 span {
   color: rgba(254,46,225,.6);
 }
-
-
 /*---------START LANDING PAGE---------*/
 
 .start-landing-wrapper {
   padding: 40px 20px 0px 20px;
   text-align: center;
-  
-  /*box-shadow: 0px 20px 10px #888888;*/
 }
-
 .title {
 	font-size: 5em;
 	color: #000;
@@ -185,13 +135,10 @@ h1 {
 .start-info {
   padding: 30px;
 }
-
 .main-logo img {
   width: 95%;
   padding: 20px;
 }
-
-
 .start-btn-div {
   padding: 10px;
   display: inline-block;
@@ -200,19 +147,13 @@ h1 {
   text-align: center;
   box-shadow: 2px 2px 5px 6px rgba(255,117,0,1);
   border-radius: 5%;
-
 }
 .start-btn-ul {
   list-style: none;
   text-transform: uppercase;
   font-family: 'Chelsea Market', cursive;
   padding: 20px 20px 20px 20px;
-  
 }
-
-.start-btn-li {
-}
-
 .start-btn-li a {
   text-decoration: none;
   color: black;
@@ -220,63 +161,47 @@ h1 {
   align-content: center;
   transition: 1s;
   font-size: 1.5em;
-  
 }
-
 .start-btn-li a:hover {
   font-size: 2em;
-
 }
-
 .start-btn-li a p {
   text-align: center;
   align-content: center;
 }
 /*---------EMOTION TO DO---------*/
-
 .col-md-8 {
   width: 680px;
   height: 480px;
 }
-
 .col-md-7 {
   height: 25em;
 }
-
 .results-emotion {
   word-wrap: break-word;
 }
-
 #face_video_canvas {
   display: block;
 }
-
 #face_video {
   display: none;
 }
-
 /*---------ROUND---------*/
-
 .round {
   background-color: rgba(222,222,222,1);
   box-shadow: 2px 2px 5px 6px rgba(222,222,222,.5);
 }
-
 .round img {
   width: 200px;
 }
-
 .emo-name {
   color: black;
   text-shadow: 1px 1px 1px #000;
-
 }
-
 .E0 {
   color: rgba(255,0,34,1);
   transition: 2s;
 }
-
 .E1 {
   color: rgba(0,132,255,1);
   transition: 2s;
@@ -297,29 +222,22 @@ h1 {
   color: rgba(255,117,0,1);
   transition: 2s;
 }
-
-
 /*---------CURRENT FACE---------*/
 td img {
   width: 90px;
   height: 90px;
 }
-
 .emo-name {
   font-size: 1.5em;
-  /*color: black;*/
   font-family: 'Chelsea Market', cursive;
-
 }
 .emo-score {
   font-family: 'Chelsea Market', cursive;
   font-size: 2em;
-  /*color: black;*/
 	text-shadow: 1px 1px 2px black;
   text-align: center;
   align-content: center;
 }
-
 td {
   align-content: center;
   text-align: center;
@@ -332,7 +250,6 @@ th {
   align-content: center;
   text-align: center;
 }
-
 .small-title {
   font-family: 'Chelsea Market', cursive;
 	font-size: 3em;
@@ -342,41 +259,20 @@ th {
   text-align: center;
   align-content: center;
 }
-.webcam-cam {
-  /*border: 1px solid #ddd;*/
-  /*padding: 0px;*/
-}
-
 .end-landing-wrapper {
   align-content: center;
   text-align: center;
 }
-@media only screen and (min-width: 999px) {
-
-  .col-md-4 {
-    width: unset;
-
-  }
-  .row {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .emo-title {
   display: inline-block;
   width: 80px;
   transition: 2s;
   padding: 10px;
 }
-
-
 .emo-title:hover {
   width: 100px;
 }
-
 /*---------MOBILE---------*/
-
 @media only screen and (max-width: 667px) {
 	h1 {
 	font-size: 28px;
@@ -438,3 +334,28 @@ th {
     font-size: 2em;
   }
 }
+@media only screen and (min-width: 999px) {
+
+  .col-md-4 {
+    width: unset;
+
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+/*COLORS TO SAVE:
+red: #FF0022 rgba(255,0,34,1);
+orange: #FF7500 rgba(255,117,0,1);
+yellow: #fff300 rgba(255,243,0,1);
+green: #00FF0E rgba(0,255,14,1);
+blue-light: #00faff rgba(0,250,255,1);
+blue-mid: #0084FF rgba(0,132,255,1);
+blue-darK: #0500FF rgba(5,0,255,1);
+teal: rgba(0,246,255,1);
+purple:#BB35F2 rgba(187,53,242,1);
+pink: #FE2EE1 rgba(254,46,225,1);
+light-grey: #EEEEEE rgba(238,238,238,1);
+dark-grey: #DEDEDE rgba(222,222,222,1);
+*/
