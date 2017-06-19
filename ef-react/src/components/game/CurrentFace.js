@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-import { Bootstrap, Grid, Row, Col, Thumbnail, Button, Modal, Table } from 'react-bootstrap';
+import { Grid, Row, Col, Thumbnail, Button, Modal, Table } from 'react-bootstrap';
 
 class CurrentFace extends Component {
     constructor(props) {

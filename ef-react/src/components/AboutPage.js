@@ -18,7 +18,7 @@ class AboutPage extends Component {
                     It is especially useful for individuals who struggle reading emotions to learn more about how different emotions look.<br /> <br />
                     Emotiface was built in one week as a final project for the Web Development Immersive Course at General Assembly by Naomi Meyer.<br /> <br />
                     Built with: React, Node, PostgreSQL, Express, Kairos Facial Recognition and Emotion Analysis AI API, plus many more middleware and npm packages.<br /> <br />
-                    To see the code and read more about the game visit: <a href="www.github.com/naeohmi/emotiface" />.<br /> <br />
+                    To see the code and read more about the game visit: <a href="www.github.com/naeohmi/emotiface">www.github.com/naeohmi/emotiface</a><br /> <br />
                     Hope you have fun playing!!
                 </p>
             </div>

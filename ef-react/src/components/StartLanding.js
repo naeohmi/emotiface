@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Footer from './Footer';
-import { Bootstrap, Jumbotron } from 'react-bootstrap';
 
 class StartLanding extends Component {
     constructor(props) {
