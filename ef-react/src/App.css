@@ -365,14 +365,14 @@ th {
 
 .emo-title {
   display: inline-block;
-  width: 100px;
+  width: 80px;
   transition: 2s;
   padding: 10px;
 }
 
 
 .emo-title:hover {
-  width: 120px;
+  width: 100px;
 }
 
 /*---------MOBILE---------*/
