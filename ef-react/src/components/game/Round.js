@@ -42,8 +42,7 @@ class Round extends Component {
             </div>
         );
 
-
-
+        //I dont know why this isnt working! 
         } else if (currentId === 0) {
             this.e1()
             console.log('e1')
