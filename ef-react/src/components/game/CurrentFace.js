@@ -207,7 +207,7 @@ class CurrentFace extends Component {
                         <Col md={4}>
                             <Thumbnail>
                                 <div className="sceenshot">
-                                    <h3 className="small-title">Here's your photo:</h3>
+                                    <h3 className="small-title">Heres your photo:</h3>
                                     {this.state.screenshot ? <img src={this.state.screenshot} alt="webcam" /> : null}
                                 </div>
 
