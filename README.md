@@ -15,7 +15,7 @@
 4. [User Stories](#userstories)
 5. [Wireframes](#wireframes)
 6. [Tech Stack](#techstack)
-7. [API Research](#apiresearch)
+7. [Research on Facial Recognition/Emotion Detection](#apiresearch)
 8. [Screenshots from Game](#screenshots)
 9. [See Project](#seeproject)
 
@@ -54,7 +54,7 @@ Useful and fun for people with autism and/or asperger's to learn and practice em
 
 ### User Stories:
 
-Target User Demographic = young people with Autism or Asperger's who want to practice reading facial expressions and figuring out  emotions from different expressions. 
+Target User Demographic = young people with Autism or Asperger's who want to practice reading facial expressions and have fun  figuring out emotions and learning how their facial expressions might be perceived by others. 
 
 1. As a user, I want to play a game with bright fun colors and simple, easy to understand button prompts.
 2. As a user, I want to take a photo of a face and see what emotions are found from that face.
@@ -111,14 +111,14 @@ Target User Demographic = young people with Autism or Asperger's who want to pra
 
 <a name="apiresearch">
 
-### Facial Recognition/Emotion Detection Research:
+### Research on Facial Recognition/Emotion Detection:
 
 #### JavaScript Libraries:
 - https://github.com/auduno/clmtrackr
 
 ![clmtrackr](/images/clmtrackr.png)
 
-#### Emotion Detection tools:
+#### Emotion Detection API tools:
 - Lambdal Facial Recognition API (https://lambdal.com/face-recognition-api#src)
 
 ![Lambdal](/images/lambdal.png)
