@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import './App.css';
+import React, { Component } from 'react';
 import StartLanding from './components/StartLanding';
 import CurrentFace from './components/game/CurrentFace';
 import EndLanding from './components/EndLanding';
@@ -11,7 +11,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import Round from './components/game/Round';
+// import Round from './components/game/Round';
 
 class App extends Component {
   constructor(props) {
@@ -46,13 +46,11 @@ class App extends Component {
               componentWillMount={this.componentWillMount}
               />)} />
             <Route path="/about" exact component={() => (<AboutPage />)} />
-            <Route path="/play/action" exact component={() => (<CurrentFace />)} />
-            <Route path="/play/:id" component={Round} />
+            <Route path="/play" exact component={() => (<CurrentFace />)} />
+            {/*<Route path="/play/:id" component={Round} />*/}
             {/*<Route path="/play/:id" exact component={() => (<Round />)} />*/}
-
             <Route path="/end" exact component={() => (<EndLanding />)} />
             <Route path="/*" exact component={() => (<FourOhFour />)} />
-            
           </Switch>
         </div>
       </Router>

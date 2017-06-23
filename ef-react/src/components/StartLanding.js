@@ -14,20 +14,13 @@ class StartLanding extends Component {
         return (
             <div className="start-landing-wrapper">
                 <h1 className="title">welcome to:</h1>
-                <div className=" animated jello"><a className="main-logo" href="/"><img src="/images/logo.png" alt="logo" /></a></div>
+                <div className=" animated jello"><a className="main-logo" href="/"><img src="http://i.imgur.com/Yv5gbrv.png" alt="logo" /></a></div>
                 <div className="start-info">
-                    {/*<div className=" animated jello emo-title"><img src="images/E0.png" alt="emoticon" /></div>*/}
-                    {/*<div className=" animated flip emo-title"><img src="images/E1.png" alt="emoticon" /></div>*/}
-                    {/*<div className=" animated tada emo-title"><img src="images/E2.png" alt="emoticon" /></div>*/}
-                    {/*<div className=" animated pulse emo-title"><img src="images/E5.png" alt="emoticon" /></div>*/}
-                    {/*<div className=" animated emo-title"><img src="images/E4.png" alt="emoticon" /></div>*/}
-                    {/*<div className=" animated rotateIn emo-title"><img src="images/E3.png" alt="emoticon" /></div>*/}
-                    {/*<h1 className="title">emotiface</h1>*/}
                     <br />
                     <div className="start-btn-div">
                         <ul className="start-btn-ul">
                             <li className="start-btn-li">
-                                <NavLink to="/play/action">
+                                <NavLink to="/play">
                                     <p>click to start!</p>
                                 </NavLink>
                             </li>
