@@ -2,8 +2,7 @@
   "name": "ef-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://naeohmi.github.io/emotiface",
-  
+  "homepage": "https://emotiface.surge.sh",  
   "dependencies": {
     "affdex-licode": "0.0.25",
     "ajax": "0.0.4",
@@ -12,7 +11,6 @@
     "clmtrackr": "^1.0.1",
     "cloudinary": "^1.9.0",
     "cors": "^2.8.3",
-    "gh-pages": "^1.0.0",
     "jquery": "^3.2.1",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
@@ -29,7 +27,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "eject": "react-scripts eject"
   }
 }

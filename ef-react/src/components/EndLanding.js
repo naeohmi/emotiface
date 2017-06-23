@@ -15,7 +15,7 @@ class EndLanding extends Component {
                    <div className="start-btn-div">
                         <ul className="start-btn-ul">
                             <li className="start-btn-li">
-                                <NavLink to="/play/action">
+                                <NavLink to="/play">
                                     <p>click to play again!</p>
                             </NavLink>
                             </li>

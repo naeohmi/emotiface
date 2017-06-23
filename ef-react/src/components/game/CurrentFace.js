@@ -112,7 +112,6 @@ class CurrentFace extends Component {
                         // console.log('obj', obj)
                         // if (obj.frames[0].people[0].emotions === undefined) {
                         if (obj.frames === undefined || obj.frames[0].people[0] === undefined || obj.frames[0].people[0].emotions === undefined) {
-                            console.log("face not found")
                             alert(`Sorry, we can't find a face in that photo, please try again`)
                             //refresh page AUTO
                             //could also use force update :)
@@ -150,7 +149,6 @@ class CurrentFace extends Component {
     }
     //bootstrap tool to open the modal window
     openModal() {
-        console.log('openModal awake')
         this.setState({
             showModal: true
         });
@@ -239,9 +237,9 @@ class CurrentFace extends Component {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><img src="/images/E3.png" alt="emoticon-joy" /></td>
-                                                <td><img src="/images/E0.png" alt="emoticon-anger" /></td>
-                                                <td><img src="/images/E2.png" alt="emoticon-fear" /></td>
+                                                <td><img src="https://i.imgur.com/yTfodcl.png" alt="emoticon-joy" /></td>
+                                                <td><img src="https://i.imgur.com/be3sZjs.png" alt="emoticon-anger" /></td>
+                                                <td><img src="https://i.imgur.com/WzbVzxW.png" alt="emoticon-fear" /></td>
                                             </tr>
                                             <tr>
                                                 <td className="emo-score E3"> +{this.state.joy} </td>
@@ -254,9 +252,9 @@ class CurrentFace extends Component {
                                                 <td className="emo-name E5"> surprise </td>
                                             </tr>
                                             <tr>
-                                                <td><img src="/images/E4.png" alt="emoticon-sad" /></td>
-                                                <td><img src="/images/E1.png" alt="emoticon-disgust" /></td>
-                                                <td><img src="/images/E5.png" alt="emoticon-surprise" /></td>
+                                                <td><img src="https://i.imgur.com/mvLBKxN.png" alt="emoticon-sad" /></td>
+                                                <td><img src="https://i.imgur.com/A3wBN7d.png" alt="emoticon-disgust" /></td>
+                                                <td><img src="https://i.imgur.com/qoaM7gd.png" alt="emoticon-surprise" /></td>
                                             </tr>
                                             <tr>
                                                 <td className="emo-score E4"> +{this.state.sadness} </td>

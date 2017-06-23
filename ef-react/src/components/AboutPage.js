@@ -4,17 +4,25 @@ class AboutPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false
+            showModal1: false,
+            showModal2: false
         }
-        this.close = this.close.bind(this);
-        this.open = this.open.bind(this);
+        this.close1 = this.close1.bind(this);
+        this.open1 = this.open1.bind(this);
+        this.close2 = this.close2.bind(this);
+        this.open2 = this.open2.bind(this);
     }
-    close() {
-        this.setState({ showModal: false });
+    close1() {
+        this.setState({ showModal1: false });
     }
-
-    open() {
-        this.setState({ showModal: true });
+    open1() {
+        this.setState({ showModal1: true });
+    }
+    close2() {
+        this.setState({ showModal2: false });
+    }
+    open2() {
+        this.setState({ showModal2: true });
     }
 
     render() {
@@ -28,28 +36,29 @@ class AboutPage extends Component {
         <div>
         <Grid>
             <Row>
+                
+                <Col xs={6} md={4}>
+                    <Thumbnail className="thumb" src="https://i.imgur.com/Yv5gbrv.png" alt="logo">
+                        <h3>About the Game:</h3>
+                        <p>
+                            <Button bsStyle="primary" onClick={this.open1}>click to learn more about emotiface</Button>&nbsp;
+                        </p>
+                    </Thumbnail>
+                </Col>
+
                 <Col xs={6} md={4}>
                     <Thumbnail className="thumb" src="https://avatars0.githubusercontent.com/u/23532036?v=3&s=460" alt="naeohmi-photo">
                         <h3>About the Developer:</h3>
                         <p>
-                            <Button bsStyle="primary">go to linkedin</Button>&nbsp;
-          <Button bsStyle="default">go to resume</Button>
+                            <Button bsStyle="primary" onClick={this.open2}>click to learn more about naeohmi</Button>&nbsp;
                         </p>
                     </Thumbnail>
                 </Col>
-                <Col xs={6} md={4}>
-                    <Thumbnail className="thumb" src="images/logo-big.png" alt="logo">
-                        <h3>About the Game:</h3>
-                        <p>
-                            <Button bsStyle="primary" onClick={this.open}>click to learn more</Button>&nbsp;
-          <Button bsStyle="default">go to github</Button>
-                        </p>
-                    </Thumbnail>
-                </Col>
+
             </Row>
         </Grid>
 
-            <Modal show={this.state.showModal} onHide={this.close}>
+            <Modal show={this.state.showModal1} onHide={this.close1}>
                 <Modal.Header closeButton>
                     <Modal.Title>About Emotiface:</Modal.Title>
                 </Modal.Header>
@@ -73,9 +82,29 @@ class AboutPage extends Component {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.close}>Close</Button>
+                    <Button onClick={this.close1}>Close</Button>
                 </Modal.Footer>
             </Modal>
+
+<Modal show={this.state.showModal2} onHide={this.close2}>
+                <Modal.Header closeButton>
+                    <Modal.Title>About naeohmi:</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <p className="about-nae">
+                        Naomi Meyer AKA naeohmi is a Web Developer currently based in New York City.<br /> <br />
+                        Before programming full time, she worked as a classroom teacher.<br /> <br />
+                        Emotiface was built with former students in mind who had trouble reading and understanding emotions.<br /> <br />
+                        Hope you enjoy! :D
+                    </p>
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={this.close2}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+
       </div >
     )
     };

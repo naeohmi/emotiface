@@ -17,7 +17,7 @@ class Navigation extends Component {
                             <NavLink to="/about">about</NavLink>
                         </li>
                         <li className="nav-li nav-li3">
-                            <NavLink to="/play/action">play</NavLink>
+                            <NavLink to="/play">play</NavLink>
                         </li>
                         <li className="nav-li nav-li4">
                             <NavLink to="/end">stop</NavLink>

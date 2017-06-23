@@ -2,6 +2,7 @@
 
 # Emotiface (Web App/Game)
 ## Project 4 - &#169; Naomi Meyer 
+## https://emotiface.surge.sh/
 
 ![logo](/images/logo.png)
 
@@ -170,13 +171,13 @@ Target User Demographic = young people with Autism or Asperger's who want to pra
 
 ## See the project here:
 
-### Live Deployment of App: www.naeohmi.github.io/emotiface
+### Live Deployment of App: https://emotiface.surge.sh/
 
 ### Download Project & Install
 
 1. Git clone or download this project
 2. Make sure to `npm install`
-3. Cd to the `react` folder
+3. Cd to the `ef-react` folder
 4. Run `npm start` and app should be available on localhost:3000
 
 Thanks :) 
