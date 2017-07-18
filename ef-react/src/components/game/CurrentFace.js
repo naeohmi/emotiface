@@ -16,13 +16,33 @@ class CurrentFace extends Component {
             fear: undefined,
             joy: undefined,
             sadness: undefined,
-            surprise: undefined
+            surprise: undefined,
+            videoSrc: null,
         }
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.handleVideo = this.handleVideo.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.checkEmotions = this.checkEmotions.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
+
+    handleVideo(stream) {
+        // Update the state, triggering the component to re-render with the correct stream
+        this.setState({
+            videoSrc: window.URL.createObjectURL(stream)
+        });
+    };
+    videoError() {
+
+    };
+    componentDidMount() {
+        console.log('awake')
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({ video: true }, this.handleVideo, this.videoError);
+        }
+    };
     //grabs the image from the webcam after user clicks button
     handleClick(event) {
         event.preventDefault();
@@ -52,10 +72,10 @@ class CurrentFace extends Component {
                         console.log("result", result.url);
                         var imgUrl = result.url;
                         //assigns URL to state
-                        that.setState({ //yay inner this! :)
+                        that.setState({
                             imgUrl
                         })
-                        //using this = Prom is now equal to imgUrl because its now a promise (using es7 syntax)
+                        //using this = Prom is now equal to imgUrl because its now a promise
                         resolve(imgUrl)
                         // console.log('within the if', result.url);
 
@@ -87,15 +107,14 @@ class CurrentFace extends Component {
             .then(data => {
                 return data.json()
             })
-            //returns the ID from kairos API then GET the emotion JSON
+            //returns the ID from kairos API then need to GET the emotion JSON
             .then(d => {
-                // console.log('data', d.id)
                 return d.id
             })
             //after the POST finishes and the ID is returned, make a GET req to grab the JSON
             .then(id => {
                 const setRequestHeader2 = {
-                    //need to make a new header with the different method
+                    //new header with the different method but same keys
                     method: "GET",
                     headers: {
                         "app_id": "9399f510",
@@ -109,17 +128,14 @@ class CurrentFace extends Component {
                     })
                     //takes the full object and grabs just the emotion data to check from
                     .then(obj => {
-                        // console.log('obj', obj)
-                        // if (obj.frames[0].people[0].emotions === undefined) {
                         if (obj.frames === undefined || obj.frames[0].people[0] === undefined || obj.frames[0].people[0].emotions === undefined) {
-                            alert(`Sorry, we can't find a face in that photo, please try again`)
-                            //refresh page AUTO
-                            //could also use force update :)
-                            window.location.reload()
+                            alert(`Sorry, we can't find a face in that photo, please try again`);
+                            //refresh page when face not found
+                            window.location.reload();
                         }
-                        let emotion = obj.frames[0].people[0].emotions
-                        console.log(`Emotions found: ${emotion}`)
-                        return emotion
+                        let emotion = obj.frames[0].people[0].emotions;
+                        console.log(`Emotions found: ${emotion}`);
+                        return emotion;
                     })
                     .then(emotion => {
                         this.setState({
@@ -131,14 +147,13 @@ class CurrentFace extends Component {
                             sadness: emotion.sadness,
                             surprise: emotion.surprise
                         })
-                        console.log('state: ', this.state.emotion)
-                        console.log(`emotions found: anger:${this.state.anger}, joy:${this.state.joy}`)
-                        return emotion
+
+                        return emotion;
                     })
             })
             //to catch and log any errors
             .catch(err => {
-                console.log(err)
+                console.log(err);
             })
     }
     //bootstrap tool to close the modal window
@@ -153,24 +168,23 @@ class CurrentFace extends Component {
             showModal: true
         });
     }
-
     render() {
-
+        //bootstrap tool to set var for tooltip to be displayed
         const tooltip = (
             <Tooltip id="tooltip">
                 <strong>Facial Recognition can be fussy sometimes!</strong>
                 When taking a photo please ensure:
-        <br />
+                <br />
                 1. Your whole face is in the screen
-        <br />
+                <br />
                 2. There are no bright lights in the photo to distract the software
-        <br />
+                <br />
                 3. You are facing forward, directly toward the camera
-        <br />
+                <br />
                 4. You are not wearing a hat or large distracting glasses
-        <br />
+                <br />
                 Thanks :D
-    </Tooltip>
+            </Tooltip>
         );
         return (
             <div className="container">
@@ -179,10 +193,14 @@ class CurrentFace extends Component {
                         <Button className="tip-button" bsStyle="default">Photo tips</Button>
                     </OverlayTrigger>
                 </ButtonToolbar>
+
+                <video src={this.state.videoSrc} autoPlay="true" />
+
                 <Grid>
                     <Row>
                         <Col md={4}>
                             <Thumbnail >
+
                                 <h3 className="small-title">Take a photo</h3>
 
                                 <div className="webcam" >
