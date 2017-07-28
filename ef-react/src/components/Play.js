@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-import { Grid, Row, Col, Thumbnail, Button, Modal, Table, OverlayTrigger, ButtonToolbar, Tooltip } from 'react-bootstrap';
+import {
+    Grid,
+    Row,
+    Col,
+    Thumbnail,
+    Button,
+    Modal,
+    Table,
+    OverlayTrigger,
+    ButtonToolbar,
+    Tooltip
+} from 'react-bootstrap';
 
-class CurrentFace extends Component {
+class Play extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,33 +27,11 @@ class CurrentFace extends Component {
             fear: undefined,
             joy: undefined,
             sadness: undefined,
-            surprise: undefined,
-            videoSrc: null,
+            surprise: undefined
         }
-        this.componentDidMount = this.componentDidMount.bind(this);
-        this.handleVideo = this.handleVideo.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.checkEmotions = this.checkEmotions.bind(this);
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     }
-
-    handleVideo(stream) {
-        // Update the state, triggering the component to re-render with the correct stream
-        this.setState({
-            videoSrc: window.URL.createObjectURL(stream)
-        });
-    };
-    videoError() {
-
-    };
-    componentDidMount() {
-        console.log('awake')
-        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-        if (navigator.getUserMedia) {
-            navigator.getUserMedia({ video: true }, this.handleVideo, this.videoError);
-        }
-    };
     //grabs the image from the webcam after user clicks button
     handleClick(event) {
         event.preventDefault();
@@ -57,28 +46,23 @@ class CurrentFace extends Component {
             let convert64ToImg = (photo64) => {
                 //because this is a method within a function, I needed to save the 'this' that I wanted
                 let that = this;
-                // base64Img.img(`${screenshot}`, '', 'screenshot', function(err, filepath) {});
-                //cloudinary header from naeohmi profile
+                
                 Cloud.config({
                     cloud_name: "dlhmylaz8",
                     api_key: "524257979483418",
                     api_secret: "T4Om9-7dWkG9YWplUDMtEbEHu6M",
                 })
-
                 //uploads photo user took to cloudinary
                 Cloud.uploader.upload(photo64, (result, err) => {
                     //grabs the photos new unique URL from cloudinary
                     if (result) {
-                        console.log("result", result.url);
+                        // console.log("result", result.url);
                         var imgUrl = result.url;
-                        //assigns URL to state
                         that.setState({
                             imgUrl
-                        })
+                        });
                         //using this = Prom is now equal to imgUrl because its now a promise
-                        resolve(imgUrl)
-                        // console.log('within the if', result.url);
-
+                        resolve(imgUrl);
                     } else {
                         console.log(`err: ${err}`);
                     }
@@ -102,7 +86,7 @@ class CurrentFace extends Component {
                 "app_key": "4d5769c498c69f04239bb8da41668afe"
             }
         }
-        //tried axios, there is an issue with axios and kairos with the config headers, so needed to use fetch which works! yay :)
+        
         fetch(`https://api.kairos.com/v2/media?source=${imgUrl}`, setRequestHeader1)
             .then(data => {
                 return data.json()
@@ -134,7 +118,7 @@ class CurrentFace extends Component {
                             window.location.reload();
                         }
                         let emotion = obj.frames[0].people[0].emotions;
-                        console.log(`Emotions found: ${emotion}`);
+                        // console.log(`Emotions found: ${emotion}`);
                         return emotion;
                     })
                     .then(emotion => {
@@ -147,27 +131,18 @@ class CurrentFace extends Component {
                             sadness: emotion.sadness,
                             surprise: emotion.surprise
                         })
-
                         return emotion;
                     })
             })
-            //to catch and log any errors
-            .catch(err => {
-                console.log(err);
-            })
+            .catch(err => { console.log(err) })
     }
-    //bootstrap tool to close the modal window
-    closeModal() {
-        this.setState({
-            showModal: false
-        });
-    }
-    //bootstrap tool to open the modal window
-    openModal() {
-        this.setState({
-            showModal: true
-        });
-    }
+    //bootstrap tools to close/open modal window
+    closeModal = () => {
+        this.setState({ showModal: false });
+    };
+    openModal = () => {
+        this.setState({ showModal: true });
+    };
     render() {
         //bootstrap tool to set var for tooltip to be displayed
         const tooltip = (
@@ -187,14 +162,12 @@ class CurrentFace extends Component {
             </Tooltip>
         );
         return (
-            <div className="container">
+            <div id="play" className="container">
                 <ButtonToolbar>
                     <OverlayTrigger placement="bottom" overlay={tooltip}>
                         <Button className="tip-button" bsStyle="default">Photo tips</Button>
                     </OverlayTrigger>
                 </ButtonToolbar>
-
-                <video src={this.state.videoSrc} autoPlay="true" />
 
                 <Grid>
                     <Row>
@@ -294,4 +267,4 @@ class CurrentFace extends Component {
     }
 };
 
-export default CurrentFace;
+export default Play;

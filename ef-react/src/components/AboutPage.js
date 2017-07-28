@@ -34,7 +34,7 @@ class AboutPage extends Component {
         );
         
         return (
-        <div>
+        <div id="about">
             <Grid>
                 <Row>
                 <Col xs={6} md={4}>
@@ -86,7 +86,7 @@ class AboutPage extends Component {
                 </Modal.Footer>
             </Modal>
 
-<Modal show={this.state.showModal2} onHide={this.close2}>
+            <Modal show={this.state.showModal2} onHide={this.close2}>
                 <Modal.Header closeButton>
                     <Modal.Title>About naeohmi:</Modal.Title>
                 </Modal.Header>
