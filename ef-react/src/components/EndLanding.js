@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 
 class EndLanding extends Component {
 
     render() {
         return (
-            <div className="end-landing-wrapper">
+            <div id="stop" className="end-landing-wrapper">
                 <Jumbotron>
                 <h1>Finished playing?</h1>
             <iframe title="stop-page" src="https://giphy.com/embed/vDurI6FYH7qi4" width="480" height="270" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
@@ -15,9 +14,9 @@ class EndLanding extends Component {
                    <div className="start-btn-div">
                         <ul className="start-btn-ul">
                             <li className="start-btn-li">
-                                <NavLink to="/play">
+                                <a href="#play"> 
                                     <p>click to play again!</p>
-                            </NavLink>
+                                </a>
                             </li>
                         </ul>
                     </div>

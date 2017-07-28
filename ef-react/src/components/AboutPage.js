@@ -30,13 +30,13 @@ class AboutPage extends Component {
         const popover = (
             <Popover id="modal-popover" title="Github">
                 www.github.com/naeohmi/emotiface
-      </Popover>
+            </Popover>
         );
+        
         return (
-        <div>
-        <Grid>
-            <Row>
-                
+        <div id="about">
+            <Grid>
+                <Row>
                 <Col xs={6} md={4}>
                     <Thumbnail className="thumb" src="https://i.imgur.com/Yv5gbrv.png" alt="logo">
                         <h3>About the Game:</h3>
@@ -86,7 +86,7 @@ class AboutPage extends Component {
                 </Modal.Footer>
             </Modal>
 
-<Modal show={this.state.showModal2} onHide={this.close2}>
+            <Modal show={this.state.showModal2} onHide={this.close2}>
                 <Modal.Header closeButton>
                     <Modal.Title>About naeohmi:</Modal.Title>
                 </Modal.Header>

@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import Cloud from 'cloudinary';
 import Webcam from 'react-webcam';
-import { Grid, Row, Col, Thumbnail, Button, Modal, Table, OverlayTrigger, ButtonToolbar, Tooltip } from 'react-bootstrap';
+import {
+    Grid,
+    Row,
+    Col,
+    Thumbnail,
+    Button,
+    Modal,
+    Table,
+    OverlayTrigger,
+    ButtonToolbar,
+    Tooltip
+} from 'react-bootstrap';
 
-class CurrentFace extends Component {
+class Play extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,8 +31,6 @@ class CurrentFace extends Component {
         }
         this.handleClick = this.handleClick.bind(this);
         this.checkEmotions = this.checkEmotions.bind(this);
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     }
     //grabs the image from the webcam after user clicks button
     handleClick(event) {
@@ -37,28 +46,23 @@ class CurrentFace extends Component {
             let convert64ToImg = (photo64) => {
                 //because this is a method within a function, I needed to save the 'this' that I wanted
                 let that = this;
-                // base64Img.img(`${screenshot}`, '', 'screenshot', function(err, filepath) {});
-                //cloudinary header from naeohmi profile
+                
                 Cloud.config({
                     cloud_name: "dlhmylaz8",
                     api_key: "524257979483418",
                     api_secret: "T4Om9-7dWkG9YWplUDMtEbEHu6M",
                 })
-
                 //uploads photo user took to cloudinary
                 Cloud.uploader.upload(photo64, (result, err) => {
                     //grabs the photos new unique URL from cloudinary
                     if (result) {
-                        console.log("result", result.url);
+                        // console.log("result", result.url);
                         var imgUrl = result.url;
-                        //assigns URL to state
-                        that.setState({ //yay inner this! :)
+                        that.setState({
                             imgUrl
-                        })
-                        //using this = Prom is now equal to imgUrl because its now a promise (using es7 syntax)
-                        resolve(imgUrl)
-                        // console.log('within the if', result.url);
-
+                        });
+                        //using this = Prom is now equal to imgUrl because its now a promise
+                        resolve(imgUrl);
                     } else {
                         console.log(`err: ${err}`);
                     }
@@ -82,20 +86,19 @@ class CurrentFace extends Component {
                 "app_key": "4d5769c498c69f04239bb8da41668afe"
             }
         }
-        //tried axios, there is an issue with axios and kairos with the config headers, so needed to use fetch which works! yay :)
+        
         fetch(`https://api.kairos.com/v2/media?source=${imgUrl}`, setRequestHeader1)
             .then(data => {
                 return data.json()
             })
-            //returns the ID from kairos API then GET the emotion JSON
+            //returns the ID from kairos API then need to GET the emotion JSON
             .then(d => {
-                // console.log('data', d.id)
                 return d.id
             })
             //after the POST finishes and the ID is returned, make a GET req to grab the JSON
             .then(id => {
                 const setRequestHeader2 = {
-                    //need to make a new header with the different method
+                    //new header with the different method but same keys
                     method: "GET",
                     headers: {
                         "app_id": "9399f510",
@@ -109,17 +112,14 @@ class CurrentFace extends Component {
                     })
                     //takes the full object and grabs just the emotion data to check from
                     .then(obj => {
-                        // console.log('obj', obj)
-                        // if (obj.frames[0].people[0].emotions === undefined) {
                         if (obj.frames === undefined || obj.frames[0].people[0] === undefined || obj.frames[0].people[0].emotions === undefined) {
-                            alert(`Sorry, we can't find a face in that photo, please try again`)
-                            //refresh page AUTO
-                            //could also use force update :)
-                            window.location.reload()
+                            alert(`Sorry, we can't find a face in that photo, please try again`);
+                            //refresh page when face not found
+                            window.location.reload();
                         }
-                        let emotion = obj.frames[0].people[0].emotions
-                        console.log(`Emotions found: ${emotion}`)
-                        return emotion
+                        let emotion = obj.frames[0].people[0].emotions;
+                        // console.log(`Emotions found: ${emotion}`);
+                        return emotion;
                     })
                     .then(emotion => {
                         this.setState({
@@ -131,58 +131,49 @@ class CurrentFace extends Component {
                             sadness: emotion.sadness,
                             surprise: emotion.surprise
                         })
-                        console.log('state: ', this.state.emotion)
-                        console.log(`emotions found: anger:${this.state.anger}, joy:${this.state.joy}`)
-                        return emotion
+                        return emotion;
                     })
             })
-            //to catch and log any errors
-            .catch(err => {
-                console.log(err)
-            })
+            .catch(err => { console.log(err) })
     }
-    //bootstrap tool to close the modal window
-    closeModal() {
-        this.setState({
-            showModal: false
-        });
-    }
-    //bootstrap tool to open the modal window
-    openModal() {
-        this.setState({
-            showModal: true
-        });
-    }
-
+    //bootstrap tools to close/open modal window
+    closeModal = () => {
+        this.setState({ showModal: false });
+    };
+    openModal = () => {
+        this.setState({ showModal: true });
+    };
     render() {
-
+        //bootstrap tool to set var for tooltip to be displayed
         const tooltip = (
             <Tooltip id="tooltip">
                 <strong>Facial Recognition can be fussy sometimes!</strong>
                 When taking a photo please ensure:
-        <br />
+                <br />
                 1. Your whole face is in the screen
-        <br />
+                <br />
                 2. There are no bright lights in the photo to distract the software
-        <br />
+                <br />
                 3. You are facing forward, directly toward the camera
-        <br />
+                <br />
                 4. You are not wearing a hat or large distracting glasses
-        <br />
+                <br />
                 Thanks :D
-    </Tooltip>
+            </Tooltip>
         );
         return (
-            <div className="container">
+            <div id="play" className="container">
                 <ButtonToolbar>
                     <OverlayTrigger placement="bottom" overlay={tooltip}>
                         <Button className="tip-button" bsStyle="default">Photo tips</Button>
                     </OverlayTrigger>
                 </ButtonToolbar>
+
                 <Grid>
                     <Row>
                         <Col md={4}>
                             <Thumbnail >
+
                                 <h3 className="small-title">Take a photo</h3>
 
                                 <div className="webcam" >
@@ -276,4 +267,4 @@ class CurrentFace extends Component {
     }
 };
 
-export default CurrentFace;
+export default Play;
