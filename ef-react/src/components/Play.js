@@ -71,15 +71,12 @@ class Play extends Component {
             convert64ToImg(screenshot);
             return Prom;
         })
-        Prom.then(data => {
-            // console.log('data: ', data);
-            this.checkEmotions(data);
-        })
+        Prom.then(data => { this.checkEmotions(data) })
     }
     //take the screenshot as jpeg in URL and send to Kairos API to check the emotion reading from AI
     checkEmotions(imgUrl) {
         //Kairos requires a POST to start which returns the ID
-        const setRequestHeader1 = {
+        const postHeader = {
             method: "POST",
             headers: {
                 "app_id": "9399f510",
@@ -87,7 +84,7 @@ class Play extends Component {
             }
         }
         
-        fetch(`https://api.kairos.com/v2/media?source=${imgUrl}`, setRequestHeader1)
+        fetch(`https://api.kairos.com/v2/media?source=${imgUrl}`, postHeader)
             .then(data => {
                 return data.json()
             })
@@ -97,7 +94,7 @@ class Play extends Component {
             })
             //after the POST finishes and the ID is returned, make a GET req to grab the JSON
             .then(id => {
-                const setRequestHeader2 = {
+                const getHeader = {
                     //new header with the different method but same keys
                     method: "GET",
                     headers: {
@@ -105,7 +102,7 @@ class Play extends Component {
                         "app_key": "4d5769c498c69f04239bb8da41668afe"
                     }
                 }
-                fetch(`https://api.kairos.com/v2/media/${id}`, setRequestHeader2)
+                fetch(`https://api.kairos.com/v2/media/${id}`, getHeader)
                     //returns the full json object, and convert to json
                     .then(object => {
                         return object.json()
@@ -118,7 +115,6 @@ class Play extends Component {
                             window.location.reload();
                         }
                         let emotion = obj.frames[0].people[0].emotions;
-                        // console.log(`Emotions found: ${emotion}`);
                         return emotion;
                     })
                     .then(emotion => {
