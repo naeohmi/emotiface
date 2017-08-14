@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,7 +22,6 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -46,19 +44,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 @import url('https://fonts.googleapis.com/css?family=Basic|Chelsea+Market|Fredericka+the+Great');
 
-/*---------FOR EVERYTHING---------*/
-
 body {
-  /*font-family: 'Chelsea Market', cursive;*/
   font-family: 'Basic', sans-serif; 
   /*font-family: 'Fredericka the Great', cursive;*/
 }
 h1 {
   font-family: 'Chelsea Market', cursive;
 }
+
 /*---------NAVIGATION---------*/
+
 .navigation-wrapper {
   height: 100px;
   background-color: rgba(222,222,222,1);
@@ -85,7 +83,6 @@ h1 {
   font-size: 20px;
   text-decoration: none;
   font-family: 'Chelsea Market', cursive;
-  /*color: rgba(187,53,242,0.8);*/
   transition: 1s;
 }
 .nav-li1 a {
@@ -108,10 +105,8 @@ h1 {
 /*---------FOOTER---------*/
 
 .footer-h2 {
-  /*color: black;*/
   font-size: 1em;
   font-family: 'Chelsea Market', cursive;
-
 }
 .footer-h2 a {
   text-decoration: none;
@@ -120,6 +115,7 @@ h1 {
 .footer-h2 span {
   color: rgba(254,46,225,.6);
 }
+
 /*---------START LANDING PAGE---------*/
 
 .start-landing-wrapper {
@@ -169,24 +165,9 @@ h1 {
   text-align: center;
   align-content: center;
 }
-/*---------EMOTION TO DO---------*/
-.col-md-8 {
-  width: 680px;
-  height: 480px;
-}
-.col-md-7 {
-  height: 25em;
-}
-.results-emotion {
-  word-wrap: break-word;
-}
-#face_video_canvas {
-  display: block;
-}
-#face_video {
-  display: none;
-}
+
 /*---------ROUND---------*/
+
 .round {
   background-color: rgba(222,222,222,1);
   box-shadow: 2px 2px 5px 6px rgba(222,222,222,.5);
@@ -228,8 +209,8 @@ h1 {
   text-align: center;
 }
 
+/*--------- PLAY ---------*/
 
-/*---------CURRENT FACE---------*/
 td img {
   width: 90px;
   height: 90px;
@@ -279,54 +260,53 @@ th {
 .emo-title:hover {
   width: 100px;
 }
-/*---------MOBILE---------*/
+
+/*--------- MEDIA QUERIES ---------*/
+
 @media only screen and (max-width: 667px) {
 	h1 {
-	font-size: 28px;
+	  font-size: 28px;
 	}
 	h2 {
-	font-size: 26px;
+	  font-size: 26px;
 	}
 	h3 {
-	font-size: 24px;
+	  font-size: 24px;
 	}
 	h4 {
-	font-size: 18px;	
-	}
-	h6 {
-	font-size: 18px;
+	  font-size: 18px;	
 	}
 	p {
-	font-size: 16px;
+	  font-size: 16px;
 	}
 	.nav {
-	height: auto;
-	display: block;
+	  height: auto;
+	  display: block;
 	}
 	.logo img {
-	float: none;
-	display: block;
-	position: relative;
-	padding: 0 38%;
+	  float: none;
+	  display: block;
+	  position: relative;
+	  padding: 0 38%;
 	}
 	nav {
-	display: block;	
+	  display: block;	
 	}
 	ul {
-	text-align: center;
-	list-style: none;
-	float: none;
-	padding: 0px;
+	  text-align: center;
+	  list-style: none;
+	  float: none;
+	  padding: 0px;
 	}
 	ul > li {
-	display: block;
-	padding: 10px 20px;
+	  display: block;
+	  padding: 10px 20px;
 	}
 	th {
-	font-size: 16px;
+	  font-size: 16px;
 	}
 	.footer-wrapper {
-	padding: 0px;
+	  padding: 0px;
 	}
   .logo-small img {
     float: none;
@@ -342,24 +322,23 @@ th {
   }
 }
 @media only screen and (min-width: 999px) {
-
   .col-md-4 {
     width: unset;
-
   }
   .row {
     display: flex;
     flex-direction: column;
   }
 }
-/*COLORS TO SAVE:
+/*
+COLORS TO SAVE:
 red: #FF0022 rgba(255,0,34,1);
 orange: #FF7500 rgba(255,117,0,1);
 yellow: #fff300 rgba(255,243,0,1);
 green: #00FF0E rgba(0,255,14,1);
 blue-light: #00faff rgba(0,250,255,1);
 blue-mid: #0084FF rgba(0,132,255,1);
-blue-darK: #0500FF rgba(5,0,255,1);
+blue-dark: #0500FF rgba(5,0,255,1);
 teal: rgba(0,246,255,1);
 purple:#BB35F2 rgba(187,53,242,1);
 pink: #FE2EE1 rgba(254,46,225,1);

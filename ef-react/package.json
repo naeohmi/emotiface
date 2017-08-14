@@ -1,15 +1,10 @@
 {
-  "name": "ef-react",
-  "version": "0.1.0",
+  "name": "emotiface",
+  "version": "0.1.2",
   "private": true,
   "homepage": "https://emotiface.surge.sh",  
   "dependencies": {
-    "affdex-licode": "0.0.25",
-    "ajax": "0.0.4",
-    "axios": "^0.16.2",
-    "clmtrackr": "^1.0.1",
     "cloudinary": "^1.9.0",
-    "cors": "^2.8.3",
     "jquery": "^3.2.1",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",

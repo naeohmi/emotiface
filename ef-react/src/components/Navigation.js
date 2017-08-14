@@ -10,16 +10,16 @@ class Navigation extends Component {
                 <nav className="navigation-nav">
                     <ul className="nav-ul">
                         <li className="nav-li nav-li1">
-                            <a href="#home"> home </a>
+                            <a href="#home">home</a>
                         </li>
                         <li className="nav-li nav-li2">
-                            <a href="#about"> about </a>
+                            <a href="#about">about</a>
                         </li>
                         <li className="nav-li nav-li3">
-                            <a href="#play"> play </a>
+                            <a href="#play">play</a>
                         </li>
                         <li className="nav-li nav-li4">
-                            <a href="#stop"> stop </a>
+                            <a href="#stop">stop</a>
                         </li>      
                     </ul>
                 </nav>
