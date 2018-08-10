@@ -2,7 +2,7 @@
   "name": "emotiface",
   "version": "0.1.2",
   "private": true,
-  "homepage": "https://emotiface.surge.sh",
+  "homepage": "https://naeohmi.github.io/emotiface",
   "dependencies": {
     "cloudinary": "^1.9.0",
     "react": "^15.5.4",
@@ -11,12 +11,15 @@
     "react-webcam": "^0.2.0"
   },
   "devDependencies": {
+    "gh-pages": "^1.2.0",
     "react-scripts": "^1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
