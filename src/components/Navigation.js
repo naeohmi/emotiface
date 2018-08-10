@@ -5,7 +5,7 @@ class Navigation extends Component {
         return (
             <div className="navigation-wrapper">
                 <div className="logo-small">
-                    <a href="/"><img src="/images/logo-small.png" alt="logo-small" /></a>
+                    <a href="/"><img src="https://i.imgur.com/LnYxCxn.png" alt="logo-small" /></a>
                 </div>
                 <nav className="navigation-nav">
                     <ul className="nav-ul">
