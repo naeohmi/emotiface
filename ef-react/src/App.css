@@ -135,35 +135,26 @@ h1 {
   width: 95%;
   padding: 20px;
 }
-.start-btn-div {
-  padding: 10px;
-  display: inline-block;
+.start-btn {
+  padding: 30px;
+  display: block;
   background-color: rgba(255,243,0,1);
   align-content: center;
   text-align: center;
   box-shadow: 2px 2px 5px 6px rgba(255,117,0,1);
   border-radius: 5%;
-}
-.start-btn-ul {
-  list-style: none;
-  text-transform: uppercase;
+  margin: 10px auto 40px auto;
+  width: 220px;
   font-family: 'Chelsea Market', cursive;
-  padding: 20px 20px 20px 20px;
-}
-.start-btn-li a {
+  text-transform: uppercase;
   text-decoration: none;
-  color: black;
-  text-align: center;
-  align-content: center;
   transition: 1s;
-  font-size: 1.5em;
+  color: black;
 }
-.start-btn-li a:hover {
-  font-size: 2em;
-}
-.start-btn-li a p {
-  text-align: center;
-  align-content: center;
+
+.start-btn:hover {
+  font-size: 18px;
+  color: black;
 }
 
 /*---------ROUND---------*/
@@ -210,6 +201,11 @@ h1 {
 }
 
 /*--------- PLAY ---------*/
+
+.results-table {
+  margin: 0 auto;
+  padding: 20px;
+}
 
 td img {
   width: 90px;
