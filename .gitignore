@@ -1,15 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-ef-react/node_modules
-
-# testing
-ef-react/coverage
-
-# production
-ef-react/build
-
-ef-react/config.js
+node_modules
 
 # misc
 .DS_Store
@@ -22,3 +14,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+package-lock.json
